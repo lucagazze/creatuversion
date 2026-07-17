@@ -138,14 +138,35 @@
             <h2 class="ct-section-title-center">Tu plan personal<br><span class="ct-gold-text">Método Reconexión</span> está listo</h2>
         </section>
 
-        <!-- IMAGEN COMPARATIVA ANTES / DESPUÉS -->
-        <section class="ct-compare-image-section">
-            <div class="ct-compare-image-wrapper">
-                <div class="ct-compare-tabs-overlay">
-                    <span class="ct-tab ct-tab--now">Ahora</span>
-                    <span class="ct-tab ct-tab--goal">Meta</span>
+        <!-- ESTADO ACTUAL vs META (reemplaza imagen rota) -->
+        <section class="ct-now-vs-goal-section">
+            <div class="ct-nvg-wrapper">
+                <!-- Columna AHORA -->
+                <div class="ct-nvg-col ct-nvg-col--now">
+                    <div class="ct-nvg-badge ct-nvg-badge--now">Ahora</div>
+                    <div class="ct-nvg-icon">💔</div>
+                    <ul class="ct-nvg-list">
+                        <li>Pensamientos obsesivos</li>
+                        <li>Sin dirección ni energía</li>
+                        <li>Actuando por pánico</li>
+                        <li>Ella no responde</li>
+                    </ul>
                 </div>
-                <img src="https://darkgreen-coyote-623209.hostingersite.com/wp-content/uploads/2026/07/metodo_reconexion_cover.webp" alt="Antes y después Método Reconexión" class="ct-compare-hero-img">
+                <!-- Flecha central -->
+                <div class="ct-nvg-arrow">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#9B7C50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <!-- Columna META -->
+                <div class="ct-nvg-col ct-nvg-col--goal">
+                    <div class="ct-nvg-badge ct-nvg-badge--goal">Meta</div>
+                    <div class="ct-nvg-icon">🔥</div>
+                    <ul class="ct-nvg-list">
+                        <li>Calma y control total</li>
+                        <li>Propósito y disciplina</li>
+                        <li>Decisiones desde la fuerza</li>
+                        <li>Ella te busca a vos</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
@@ -736,7 +757,8 @@ body {
     padding: 40px 24px;
     display: flex;
     flex-direction: column;
-    min-height: 80vh;
+    min-height: 100svh;
+    min-height: 100vh;
 }
 
 .ct-quiz-progress-bar {
@@ -843,22 +865,38 @@ body {
     padding: 8px 14px; border-radius: 6px; letter-spacing: 0.5px;
 }
 
-/* ---- COMPARE IMAGE ---- */
-.ct-compare-image-section { padding: 0 16px 16px; }
-.ct-compare-image-wrapper { position: relative; border-radius: 12px; overflow: hidden; }
-.ct-compare-tabs-overlay {
-    position: absolute; top: 12px; left: 0; right: 0;
-    display: flex; justify-content: space-between; gap: 12px;
-    padding: 0 18px; z-index: 10;
+/* ---- NOW VS GOAL ---- */
+.ct-now-vs-goal-section { padding: 0 16px 16px; }
+.ct-nvg-wrapper {
+    display: flex; align-items: stretch; gap: 0;
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.07);
 }
-.ct-tab {
-    flex: 1; text-align: center; padding: 5px 0;
-    font-size: 13px; font-weight: 600; border-radius: 6px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+.ct-nvg-col {
+    flex: 1; padding: 16px 12px;
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
 }
-.ct-tab--now { background: rgba(255,255,255,0.92); color: var(--ct-gold); }
-.ct-tab--goal { background: var(--ct-gold); color: #fff; }
-.ct-compare-hero-img { width: 100%; height: auto; display: block; }
+.ct-nvg-col--now { background: #fff5f5; }
+.ct-nvg-col--goal { background: #f0fdf8; }
+.ct-nvg-badge {
+    font-size: 10px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; padding: 3px 10px;
+    border-radius: 20px;
+}
+.ct-nvg-badge--now { background: rgba(229,57,53,0.1); color: var(--ct-red); }
+.ct-nvg-badge--goal { background: rgba(41,177,125,0.15); color: var(--ct-green); }
+.ct-nvg-icon { font-size: 28px; }
+.ct-nvg-list {
+    list-style: none; display: flex; flex-direction: column; gap: 6px; width: 100%;
+}
+.ct-nvg-list li {
+    font-size: 11px; font-weight: 500; line-height: 1.3;
+    color: var(--ct-text-dark); text-align: center;
+}
+.ct-nvg-arrow {
+    display: flex; align-items: center; justify-content: center;
+    padding: 0 6px; background: #fff; flex-shrink: 0;
+}
 
 /* ---- MINI CARDS ---- */
 .ct-mini-cards-row { display: flex; gap: 10px; }
