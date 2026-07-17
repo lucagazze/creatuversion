@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete your purchase</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f5efe6; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #343434; -webkit-font-smoothing: antialiased;">
+
+    <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #f5efe6; padding: 30px 10px;">
+        <tr>
+            <td align="center">
+                
+                <!-- Main Container Table -->
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width: 580px; background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04); border: 1px solid #eaeaea;">
+                    
+                    <!-- Header Banner -->
+                    <tr>
+                        <td align="center" style="padding: 30px 20px 20px; background-color: #ffffff; border-bottom: 1px solid #eaeaea;">
+                            <span style="font-size: 11px; font-weight: 700; color: #9B7C50; letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-bottom: 4px;">MÉTODO RECONEXIÓN</span>
+                            <span style="font-size: 19px; font-weight: 700; color: #343434; display: block; line-height: 1.2;">Complete Your Order</span>
+                        </td>
+                    </tr>
+
+                    <!-- Email Body Content -->
+                    <tr>
+                        <td style="padding: 35px 30px; line-height: 1.6;">
+                            
+                            <!-- Greeting -->
+                            <p style="font-size: 15px; margin-top: 0; margin-bottom: 16px; font-weight: 600; color: #343434;">
+                                Hi {{cart_billing_first_name fallback='there'}},
+                            </p>
+                            
+                            <p style="font-size: 14.5px; margin-top: 0; margin-bottom: 16px; color: #555555;">
+                                We noticed that you were trying to make a purchase from our store but could not complete the process.
+                            </p>
+
+                            <!-- Discount Reserved Banner -->
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #fcf8f2; border-left: 4px solid #9B7C50; border-radius: 6px; margin: 20px 0;">
+                                <tr>
+                                    <td style="padding: 14px 18px;">
+                                        <span style="font-size: 11px; font-weight: 700; color: #9B7C50; display: block; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px;">Exclusive benefit for today</span>
+                                        <span style="font-size: 13px; color: #343434; display: block; line-height: 1.4;">
+                                            We have <strong>reserved your 64% special discount for today only</strong> so you can access the method at the best price.
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <p style="font-size: 14.5px; margin-top: 0; margin-bottom: 24px; color: #555555;">
+                                Good news: <strong>your cart is still saved</strong> and you can complete your purchase with your discount now!
+                            </p>
+
+                            <!-- WooCommerce Cart Table Placeholder Container -->
+                            <div style="margin: 25px 0; border: 1px solid #eaeaea; border-radius: 8px; overflow: hidden; padding: 12px; background-color: #fafafa;">
+                                {{cart_items template='cart-table'}}
+                            </div>
+
+                            <!-- Expiration notice -->
+                            <p style="font-size: 13.5px; margin-top: 0; margin-bottom: 24px; color: #747474; font-style: italic;">
+                                Please don't wait for too long, as your cart will expire soon.
+                            </p>
+
+                            <!-- Call to Action Button -->
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                <tr>
+                                    <td align="center" style="padding-bottom: 15px;">
+                                        <a href="{{cart_recovery_link}}" target="_blank" style="display: inline-block; background-color: #29B17D; color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 700; padding: 16px 36px; border-radius: 8px; box-shadow: 0 4px 12px rgba(41, 177, 125, 0.25); text-align: center; letter-spacing: 0.5px;">
+                                            COMPLETE YOUR PURCHASE NOW
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- Sign-off -->
+                            <p style="font-size: 14.5px; margin-top: 24px; margin-bottom: 0; color: #555555;">
+                                Thanks,<br>
+                                <strong>Best,</strong>
+                            </p>
+
+                            <!-- P.S. block -->
+                            <hr style="border: 0; border-top: 1px solid #eaeaea; margin: 30px 0 20px;">
+                            <p style="font-size: 13px; color: #666666; margin: 0; line-height: 1.5;">
+                                <strong>P.S:</strong> If you're having any trouble or have a question, please reply to this email. Otherwise, finish checking out your purchases <a href="{{cart_recovery_link}}" style="color: #9B7C50; text-decoration: underline; font-weight: 600;">here</a>.
+                            </p>
+
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td align="center" style="padding: 25px 20px; background-color: #fafafa; border-top: 1px solid #eaeaea;">
+                            <p style="font-size: 11px; color: #888888; margin: 0 0 10px; line-height: 1.45; max-width: 440px;">
+                                {{business_name}}, {{business_address}}
+                            </p>
+                            <p style="font-size: 11px; color: #888888; margin: 0; line-height: 1.45;">
+                                Don't want to stay in the loop? We'll be sad to see you go, but you can <a href="{{unsubscribe_link}}" style="color: #9B7C50; text-decoration: underline;">click here to unsubscribe</a>.
+                            </p>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

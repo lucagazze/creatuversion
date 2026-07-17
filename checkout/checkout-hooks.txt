@@ -1,0 +1,32 @@
+<?php
+/**
+ * OPTIMIZACIÓN DE CAMPOS DE CHECKOUT EN WOOCOMMERCE
+ * 
+ * Instrucciones:
+ * Copia este código y pégalo al final del archivo `functions.php` de tu tema hijo (child theme)
+ * o utilízalo mediante un plugin como "Code Snippets".
+ * Este código elimina todos los campos de dirección de envío y facturación, dejando únicamente
+ * Nombre, Apellido, Correo Electrónico y Teléfono.
+ */
+
+// 1. Desactivar campos innecesarios de facturación y envío
+add_filter( 'woocommerce_checkout_fields' , 'ct_custom_override_checkout_fields' );
+function ct_custom_override_checkout_fields( $fields ) {
+    // Quitar campos de facturación sobrantes
+    unset( $fields['billing']['billing_company'] );
+    unset( $fields['billing']['billing_address_1'] );
+    unset( $fields['billing']['billing_address_2'] );
+    unset( $fields['billing']['billing_city'] );
+    unset( $fields['billing']['billing_postcode'] );
+    unset( $fields['billing']['billing_country'] );
+    unset( $fields['billing']['billing_state'] );
+    
+    // Opcional: También puedes quitar comentarios de orden/notas adicionales si no los usas
+    unset( $fields['order']['order_comments'] );
+
+    return $fields;
+}
+
+// 2. Si WooCommerce aún intenta solicitar envío debido a configuraciones de productos
+add_filter( 'woocommerce_cart_needs_shipping_address', '__return_false' );
+add_filter( 'woocommerce_enable_order_notes_field', '__return_false' );

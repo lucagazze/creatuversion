@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completa tu pedido</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f5efe6; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #343434; -webkit-font-smoothing: antialiased;">
+
+    <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #f5efe6; padding: 30px 10px;">
+        <tr>
+            <td align="center">
+                
+                <!-- Main Container Table -->
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width: 580px; background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04); border: 1px solid #eaeaea;">
+                    
+                    <!-- Header Banner -->
+                    <tr>
+                        <td align="center" style="padding: 30px 20px 20px; background-color: #ffffff; border-bottom: 1px solid #eaeaea;">
+                            <span style="font-size: 11px; font-weight: 700; color: #9B7C50; letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-bottom: 4px;">MÉTODO RECONEXIÓN</span>
+                            <span style="font-size: 19px; font-weight: 700; color: #343434; display: block; line-height: 1.2;">Completa tu pedido</span>
+                        </td>
+                    </tr>
+
+                    <!-- Email Body Content -->
+                    <tr>
+                        <td style="padding: 35px 30px; line-height: 1.6;">
+                            
+                            <!-- Greeting -->
+                            <p style="font-size: 15px; margin-top: 0; margin-bottom: 16px; font-weight: 600; color: #343434;">
+                                Hola {{cart_billing_first_name fallback='ahí'}},
+                            </p>
+                            
+                            <p style="font-size: 14.5px; margin-top: 0; margin-bottom: 16px; color: #555555;">
+                                Vimos que estuviste a punto de acceder al <strong>Método Reconexión</strong> pero no llegaste a completar el registro.
+                            </p>
+                            
+                            <p style="font-size: 14.5px; margin-top: 0; margin-bottom: 16px; color: #555555;">
+                                Sabemos que tomar esta decisión puede generar dudas. Pero si estás aquí, es porque sabes que <strong>seguir haciendo lo mismo no es una opción</strong>. Cada mensaje impulsivo, cada promesa desesperada y cada intento por convencerla solo aumentan la presión y le confirman que tomó la decisión correcta al alejarse.
+                            </p>
+
+                            <!-- Banner de Descuento Reservado por hoy -->
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #fcf8f2; border-left: 4px solid #9B7C50; border-radius: 6px; margin: 20px 0;">
+                                <tr>
+                                    <td style="padding: 14px 18px;">
+                                        <span style="font-size: 11px; font-weight: 700; color: #9B7C50; display: block; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px;">Beneficio exclusivo por hoy</span>
+                                        <span style="font-size: 13px; color: #343434; display: block; line-height: 1.4;">
+                                            Hemos <strong>guardado tu descuento especial del 64% por el día de hoy</strong> para que no asumas costos de lista.
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <p style="font-size: 14.5px; margin-top: 0; margin-bottom: 16px; color: #555555;">
+                                El Método Reconexión cambia el juego: no vas a ir detrás de ella. Vas a seguir un plan de 30 días estructurado en dos volúmenes (Fundamentos + Plan de Acción) diseñado para recuperar tu energía, tu disciplina y tu presencia masculina.
+                            </p>
+
+                            <p style="font-size: 14.5px; margin-top: 0; margin-bottom: 16px; color: #555555;">
+                                Cuando ella vuelva a mirar en tu dirección, no va a encontrar al mismo hombre necesitado que decidió dejar. Va a encontrar a alguien firme, seguro y que ya no puede dar por sentado.
+                            </p>
+
+                            <p style="font-size: 14.5px; margin-top: 0; margin-bottom: 24px; color: #555555;">
+                                Tu carrito y los siguientes ítems te están esperando:
+                            </p>
+
+                            <!-- WooCommerce Cart Table Placeholder Container -->
+                            <div style="margin: 25px 0; border: 1px solid #eaeaea; border-radius: 8px; overflow: hidden; padding: 12px; background-color: #fafafa;">
+                                {{cart_items template='cart-table'}}
+                            </div>
+
+                            <!-- Expiration notice -->
+                            <p style="font-size: 13.5px; margin-top: 0; margin-bottom: 24px; color: #747474; font-style: italic;">
+                                Por favor no dejes pasar más tiempo. El cupón de descuento del 64% expira al final del día.
+                            </p>
+
+                            <!-- Call to Action Button -->
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                <tr>
+                                    <td align="center" style="padding-bottom: 15px;">
+                                        <a href="{{cart_recovery_link}}" target="_blank" style="display: inline-block; background-color: #29B17D; color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 700; padding: 16px 36px; border-radius: 8px; box-shadow: 0 4px 12px rgba(41, 177, 125, 0.25); text-align: center; letter-spacing: 0.5px;">
+                                            COMPLETAR MI COMPRA AHORA
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- Sign-off -->
+                            <p style="font-size: 14.5px; margin-top: 24px; margin-bottom: 0; color: #555555;">
+                                Gracias,<br>
+                                <strong>Saludos cordiales,</strong>
+                            </p>
+
+                            <!-- P.S. block -->
+                            <hr style="border: 0; border-top: 1px solid #eaeaea; margin: 30px 0 20px;">
+                            <p style="font-size: 13px; color: #666666; margin: 0; line-height: 1.5;">
+                                <strong>P.D:</strong> Si has tenido algún inconveniente técnico o tienes dudas, solo responde a este correo. Si no, puedes completar tu orden directamente haciendo clic <a href="{{cart_recovery_link}}" style="color: #9B7C50; text-decoration: underline; font-weight: 600;">aquí</a>.
+                            </p>
+
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td align="center" style="padding: 25px 20px; background-color: #fafafa; border-top: 1px solid #eaeaea;">
+                            <p style="font-size: 11px; color: #888888; margin: 0 0 10px; line-height: 1.45; max-width: 440px;">
+                                {{business_name}}, {{business_address}}
+                            </p>
+                            <p style="font-size: 11px; color: #888888; margin: 0; line-height: 1.45;">
+                                ¿No deseas recibir más novedades? <a href="{{unsubscribe_link}}" style="color: #9B7C50; text-decoration: underline;">Haz clic aquí para darte de baja</a>.
+                            </p>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

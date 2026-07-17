@@ -1,0 +1,35 @@
+/* ==========================================
+   SISTEMA DE DISEÑO - CONTROL TOTAL
+   ========================================== */
+
+:root {
+    /* Colores Principales */
+    --ct-dark: #071b29;
+    --ct-muted-slate: #53616a;
+    --ct-body-text: #44515a;
+    --ct-border: rgba(7, 27, 41, 0.13);
+
+    /* Acentos y Estados */
+    --ct-accent-red: #a84e51;
+    --ct-accent-red-hover: #913f41;
+    --ct-accent-gold: #d27b2d;
+    --ct-accent-green: #2f5c4b;
+
+    /* Fondos */
+    --ct-bg-light: #fcfbfa;
+    --ct-bg-card: #f7f4ee;
+
+    /* Tipografía */
+    --ct-font-family: "Hind", Arial, sans-serif;
+
+    /* Animaciones y Transiciones */
+    --ct-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --ct-shadow-sm: 0 4px 10px rgba(7, 27, 41, 0.05);
+    --ct-shadow-md: 0 8px 20px rgba(7, 27, 41, 0.08);
+    --ct-shadow-lg: 0 15px 30px rgba(7, 27, 41, 0.12);
+}
+
+/* Estilos Globales Útiles para Bloques HTML en Elementor */
+.ct-font-hind {
+    font-family: var(--ct-font-family);
+}
