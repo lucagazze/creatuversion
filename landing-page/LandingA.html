@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Test de Reconexión - Método Reconexión</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+
+<div class="ct-app-card">
+
+    <!-- ================================================================
+         1. QUIZ FUNNEL (idéntico a landingA)
+         ================================================================ -->
+    <div id="ct-quiz-wrapper" class="ct-flow-container">
+        <div class="ct-quiz-progress-bar">
+            <div id="ct-progress-fill" class="ct-progress-fill" style="width: 16.6%;"></div>
+        </div>
+        <div class="ct-quiz-steps-header">
+            <span id="ct-step-indicator">Paso 1 de 6</span>
+        </div>
+
+        <div class="ct-quiz-step ct-quiz-step--active" data-step="1">
+            <h2>¿Cuánto tiempo hace que terminó la relación?</h2>
+            <p class="ct-step-subtitle">Selecciona la opción que mejor se adapte a tu caso.</p>
+            <div class="ct-options-grid">
+                <button class="ct-option-card" onclick="nextStep(1,'Menos de 2 semanas')">Menos de 2 semanas</button>
+                <button class="ct-option-card" onclick="nextStep(1,'Entre 2 semanas y 2 meses')">Entre 2 semanas y 2 meses</button>
+                <button class="ct-option-card" onclick="nextStep(1,'Hace más de 2 meses')">Hace más de 2 meses</button>
+            </div>
+        </div>
+
+        <div class="ct-quiz-step" data-step="2">
+            <h2>¿Cómo te sientes la mayor parte del día?</h2>
+            <p class="ct-step-subtitle">Tu estado emocional es clave para estructurar el plan.</p>
+            <div class="ct-options-grid">
+                <button class="ct-option-card" onclick="nextStep(2,'Con un vacío en el pecho y ansiedad constante')">Con un vacío en el pecho y ansiedad constante</button>
+                <button class="ct-option-card" onclick="nextStep(2,'Enojado, confundido y buscando respuestas')">Enojado, confundido y buscando respuestas</button>
+                <button class="ct-option-card" onclick="nextStep(2,'Intentando seguir adelante pero pensando en ella')">Intentando seguir adelante pero pensando en ella</button>
+            </div>
+        </div>
+
+        <div class="ct-quiz-step" data-step="3">
+            <h2>¿Cuál es el estado de comunicación actual con tu ex?</h2>
+            <p class="ct-step-subtitle">Define el canal de contacto para aplicar la estrategia correcta.</p>
+            <div class="ct-options-grid">
+                <button class="ct-option-card" onclick="nextStep(3,'Me bloqueó de todos lados / Contacto Cero absoluto')">Me bloqueó de todos lados / Contacto Cero absoluto</button>
+                <button class="ct-option-card" onclick="nextStep(3,'Respuestas frías, cortantes o me deja en visto')">Respuestas frías, cortantes o me deja en visto</button>
+                <button class="ct-option-card" onclick="nextStep(3,'Hablamos de vez en cuando de forma casual')">Hablamos de vez en cuando de forma casual</button>
+            </div>
+        </div>
+
+        <div class="ct-quiz-step" data-step="4">
+            <h2>¿Cuáles de estos errores has cometido tras la ruptura?</h2>
+            <p class="ct-step-subtitle">Selecciona todos los que apliquen (sé honesto contigo mismo).</p>
+            <div class="ct-checkbox-list">
+                <label class="ct-checkbox-card">
+                    <input type="checkbox" name="errors" value="textos_eternos">
+                    <span class="ct-checkbox-text">Escribirle textos eternos a la madrugada</span>
+                </label>
+                <label class="ct-checkbox-card">
+                    <input type="checkbox" name="errors" value="rogar">
+                    <span class="ct-checkbox-text">Rogarle, suplicarle o prometerle cambios</span>
+                </label>
+                <label class="ct-checkbox-card">
+                    <input type="checkbox" name="errors" value="stalkear">
+                    <span class="ct-checkbox-text">Revisar obsesivamente su WhatsApp / Redes sociales</span>
+                </label>
+                <label class="ct-checkbox-card">
+                    <input type="checkbox" name="errors" value="provocar_celos">
+                    <span class="ct-checkbox-text">Subir historias o fotos para intentar darle celos</span>
+                </label>
+            </div>
+            <button class="ct-cta-btn" style="padding: 16px;" onclick="processStep4()">CONTINUAR</button>
+        </div>
+
+        <div class="ct-quiz-step" data-step="5">
+            <h2>¿Cuánto tiempo duró la relación?</h2>
+            <p class="ct-step-subtitle">La duración de la relación influye en la inercia del contacto.</p>
+            <div class="ct-options-grid">
+                <button class="ct-option-card" onclick="nextStep(5,'Menos de 1 año')">Menos de 1 año</button>
+                <button class="ct-option-card" onclick="nextStep(5,'Entre 1 y 3 años')">Entre 1 y 3 años</button>
+                <button class="ct-option-card" onclick="nextStep(5,'Más de 3 años')">Más de 3 años</button>
+            </div>
+        </div>
+
+        <div class="ct-quiz-step" data-step="6">
+            <h2>¿Estás comprometido a seguir este método durante 30 días?</h2>
+            <p class="ct-step-subtitle">Sin romper el contacto cero y sin actuar por desesperación.</p>
+            <div class="ct-options-grid">
+                <button class="ct-option-card" onclick="finishQuiz('Si, 100% comprometido')">Sí, estoy 100% listo para recuperar el control</button>
+                <button class="ct-option-card" onclick="finishQuiz('Tengo dudas, pero quiero cambiar')">Tengo dudas, pero estoy dispuesto a intentarlo</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================
+         2. LOADING SCREEN
+         ================================================================ -->
+    <div id="ct-loading-wrapper" class="ct-flow-container ct-hidden">
+        <div class="ct-loader-content">
+            <div class="ct-spinner"></div>
+            <h2 id="ct-loading-title">Analizando tus respuestas...</h2>
+            <p id="ct-loading-subtitle">Procesando respuestas del test psicológico.</p>
+            <div class="ct-loading-steps">
+                <div class="ct-loading-step-item" id="loading-step-1">
+                    <span class="ct-tick">✓</span> Evaluando nivel de dependencia emocional...
+                </div>
+                <div class="ct-loading-step-item" id="loading-step-2">
+                    <span class="ct-tick">✓</span> Calculando tasa de éxito de reconexión...
+                </div>
+                <div class="ct-loading-step-item" id="loading-step-3">
+                    <span class="ct-tick">✓</span> Estructurando tu plan personalizado...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================
+         3. OFFER PAGE — Estructura MusesAcademy
+         ================================================================ -->
+    <div id="ct-offer-wrapper" class="ct-hidden">
+
+        <!-- STICKY HEADER -->
+        <header class="ct-sticky-header">
+            <div class="ct-sticky-header__content">
+                <div class="ct-sticky-header__left">
+                    <span class="ct-sticky-header__label">Descuento reservado:</span>
+                    <span class="ct-sticky-header__timer" id="ct-countdown-timer">09:40</span>
+                </div>
+                <a href="#ct-pricing" class="ct-header-cta-btn ct-btn-pulse">APROVECHAR</a>
+            </div>
+        </header>
+
+        <!-- TÍTULO PRINCIPAL -->
+        <section class="ct-offer-section" style="margin-top: 64px; padding-bottom: 0;">
+            <h2 class="ct-section-title-center">Tu plan de reconexión está listo,<br><span class="ct-gold-text">empezá hoy.</span></h2>
+        </section>
+
+        <!-- IMAGEN COMPARATIVA AHORA vs META -->
+        <section class="ct-compare-image-section">
+            <div class="ct-compare-image-wrapper">
+                <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/ChatGPT-Image-Jul-17-2026-05_59_15-PM.webp" alt="Ahora vs Meta - Método Reconexión" class="ct-compare-hero-img">
+            </div>
+        </section>
+
+        <!-- STATUS / GOAL MINI CARDS -->
+        <section class="ct-offer-section">
+            <div class="ct-mini-cards-row">
+                <div class="ct-mini-card-b">
+                    <img src="https://indigo-antelope-682163.hostingersite.com/wp-content/uploads/2026/07/status_activity.png" alt="Estado" class="ct-mini-icon">
+                    <div>
+                        <span class="ct-mini-label">Estado:</span>
+                        <span class="ct-mini-val" id="ct-status-value">Ruptura reciente</span>
+                    </div>
+                </div>
+                <div class="ct-mini-card-b">
+                    <img src="https://indigo-antelope-682163.hostingersite.com/wp-content/uploads/2026/07/goal_target.png" alt="Meta" class="ct-mini-icon">
+                    <div>
+                        <span class="ct-mini-label">Meta:</span>
+                        <span class="ct-mini-val" id="ct-goal-value">Hacer que te extrañe</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ESTADÍSTICAS DE COMPARACIÓN -->
+        <section class="ct-stats-section">
+            <div class="ct-stats-grid">
+                <!-- Columna ANTES -->
+                <div class="ct-stats-col">
+                    <div class="ct-stat-block">
+                        <h3 class="ct-stat-title">Tu posición ahora</h3>
+                        <p class="ct-stat-val ct-val--red">Cediendo terreno</p>
+                    </div>
+                    <div class="ct-stat-block">
+                        <h3 class="ct-stat-title">Tu comportamiento</h3>
+                        <p class="ct-stat-val ct-val--red" style="margin-bottom: 8px;">Actuando por ansiedad</p>
+                        <div class="ct-lines">
+                            <div class="ct-line ct-line--red ct-line--fill"></div>
+                            <div class="ct-line ct-line--red ct-line--fill"></div>
+                            <div class="ct-line"></div>
+                        </div>
+                    </div>
+                    <div class="ct-stat-block">
+                        <h3 class="ct-stat-title">Conexión</h3>
+                        <p class="ct-stat-val ct-val--red" style="margin-bottom: 8px;">Empujando, ella retrocede</p>
+                        <div class="ct-slider-track">
+                            <div class="ct-slider-fill" style="width: 15%; background: var(--ct-red);"></div>
+                            <div class="ct-slider-thumb" style="left: 15%; background: var(--ct-red);"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna DESPUÉS -->
+                <div class="ct-stats-col ct-stats-col--after">
+                    <div class="ct-stat-block">
+                        <h3 class="ct-stat-title">Tu posición meta</h3>
+                        <p class="ct-stat-val ct-val--green">Ella pregunta, vos decidís</p>
+                    </div>
+                    <div class="ct-stat-block">
+                        <h3 class="ct-stat-title">Tu comportamiento</h3>
+                        <p class="ct-stat-val ct-val--green" style="margin-bottom: 8px;">Decidido desde la calma</p>
+                        <div class="ct-lines">
+                            <div class="ct-line ct-line--green ct-line--fill"></div>
+                            <div class="ct-line ct-line--green ct-line--fill"></div>
+                            <div class="ct-line ct-line--green ct-line--fill"></div>
+                        </div>
+                    </div>
+                    <div class="ct-stat-block">
+                        <h3 class="ct-stat-title">Conexión</h3>
+                        <p class="ct-stat-val ct-val--green" style="margin-bottom: 8px;">Ella se acerca, vos manejás</p>
+                        <div class="ct-slider-track">
+                            <div class="ct-slider-fill" style="width: 85%; background: var(--ct-green);"></div>
+                            <div class="ct-slider-thumb" style="left: 85%; background: var(--ct-green);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="ct-stats-disclaimer">Esto no es una promesa. Es el estado que el plan construye en vos.</p>
+        </section>
+
+        <!-- TÍTULO PLAN LISTO -->
+        <section class="ct-offer-section">
+            <h2 class="ct-section-title-center">Dejá de improvisar.<br><span class="ct-gold-text">Tenés un sistema.</span></h2>
+        </section>
+
+        <!-- PRICING (radio buttons estilo MusesAcademy) -->
+        <section id="ct-pricing" class="ct-offer-section ct-pricing-section">
+            <div class="ct-plans-timer-row">
+                <span>⚡ El descuento expira en: <strong id="ct-plans-countdown-timer">09:40</strong></span>
+            </div>
+
+            <div class="ct-radio-plans">
+
+                <!-- Plan 12 semanas -->
+                <label class="ct-radio-plan" id="plan-12w">
+                    <input type="radio" name="ct_plan_b" value="24999" onclick="selectPlan(this, 35000, 24999)">
+                    <div class="ct-radio-body">
+                        <div class="ct-radio-indicator">
+                            <div class="ct-radio-dot"></div>
+                        </div>
+                        <div class="ct-radio-info">
+                            <div class="ct-radio-name">PLAN BÁSICO DIGITAL</div>
+                            <div class="ct-radio-desc">Manual Vol. I + Vol. II en PDF</div>
+                        </div>
+                        <div class="ct-radio-price-box">
+                            <div class="ct-radio-old-price">$35.000</div>
+                            <div class="ct-radio-price">$24.999</div>
+                        </div>
+                    </div>
+                </label>
+
+                <!-- Plan 4 semanas (POPULAR) -->
+                <label class="ct-radio-plan ct-radio-plan--popular" id="plan-4w">
+                    <div class="ct-popular-badge">👍 MÁS ELEGIDO</div>
+                    <input type="radio" name="ct_plan_b" value="14999" checked onclick="selectPlan(this, 35000, 14999)">
+                    <div class="ct-radio-body">
+                        <div class="ct-radio-indicator ct-radio-indicator--active">
+                            <div class="ct-radio-dot ct-radio-dot--active"></div>
+                        </div>
+                        <div class="ct-radio-info">
+                            <div class="ct-radio-name">PLAN COMPLETO 30 DÍAS</div>
+                            <div class="ct-radio-desc">Manual PDF + Rastreador + Matriz de respuestas</div>
+                        </div>
+                        <div class="ct-radio-price-box ct-radio-price-box--active">
+                            <div class="ct-radio-old-price">$35.000</div>
+                            <div class="ct-radio-price">$14.999</div>
+                        </div>
+                    </div>
+                </label>
+
+                <!-- Plan 24 semanas -->
+                <label class="ct-radio-plan" id="plan-24w">
+                    <input type="radio" name="ct_plan_b" value="29999" onclick="selectPlan(this, 55000, 29999)">
+                    <div class="ct-radio-body">
+                        <div class="ct-radio-indicator">
+                            <div class="ct-radio-dot"></div>
+                        </div>
+                        <div class="ct-radio-info">
+                            <div class="ct-radio-name">PLAN VIP PREMIUM</div>
+                            <div class="ct-radio-desc">Manual + Audios + Soporte 1 a 1 por WhatsApp</div>
+                        </div>
+                        <div class="ct-radio-price-box">
+                            <div class="ct-radio-old-price">$55.000</div>
+                            <div class="ct-radio-price">$29.999</div>
+                        </div>
+                    </div>
+                </label>
+
+            </div>
+
+            <!-- CTA BUTTON -->
+            <a href="https://darkgreen-coyote-623209.hostingersite.com/checkouts/checkout-page/" class="ct-cta-btn ct-btn-pulse" style="margin-top: 20px; display: block; text-align: center; text-decoration: none;">
+                ACCEDER AL MÉTODO RECONEXIÓN
+            </a>
+
+            <!-- SECURE BADGE -->
+            <div class="ct-secure-row">
+                <svg class="ct-secure-svg" viewBox="0 0 24 24" fill="none" stroke="#29B17D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <span>Pago 100% seguro · Acceso inmediato · Garantía 30 días</span>
+            </div>
+        </section>
+
+        <!-- HIGHLIGHTS / CHEVRON TIMELINE -->
+        <section class="ct-offer-section">
+            <h2 class="ct-section-title-center">Las 4 semanas del plan</h2>
+            <div class="ct-chevrons-b">
+                <div class="ct-chevron-b" style="color: rgb(229,201,181);">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 102 140" preserveAspectRatio="none" class="ct-chevron-b__svg"><path fill="currentColor" fill-rule="evenodd" d="m80.378 0 21.49 70-21.49 70H0l21.49-70L0 0z" clip-rule="evenodd"></path></svg>
+                    <div class="ct-chevron-b__content">
+                        <span class="ct-chevron-b__week">SEM 1</span>
+                        <span class="ct-chevron-b__emoji">🧠</span>
+                        <span class="ct-chevron-b__desc">El giro contrario: dejás de perseguir</span>
+                    </div>
+                </div>
+                <div class="ct-chevron-b" style="color: rgb(240,224,196);">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 102 140" preserveAspectRatio="none" class="ct-chevron-b__svg"><path fill="currentColor" fill-rule="evenodd" d="m80.378 0 21.49 70-21.49 70H0l21.49-70L0 0z" clip-rule="evenodd"></path></svg>
+                    <div class="ct-chevron-b__content">
+                        <span class="ct-chevron-b__week">SEM 2</span>
+                        <span class="ct-chevron-b__emoji">⚡</span>
+                        <span class="ct-chevron-b__desc">Reconstruís tu energía y presencia</span>
+                    </div>
+                </div>
+                <div class="ct-chevron-b" style="color: rgb(204,237,229);">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 102 140" preserveAspectRatio="none" class="ct-chevron-b__svg"><path fill="currentColor" fill-rule="evenodd" d="m80.378 0 21.49 70-21.49 70H0l21.49-70L0 0z" clip-rule="evenodd"></path></svg>
+                    <div class="ct-chevron-b__content">
+                        <span class="ct-chevron-b__week">SEM 3</span>
+                        <span class="ct-chevron-b__emoji">💬</span>
+                        <span class="ct-chevron-b__desc">Aplicás el guion del primer mensaje</span>
+                    </div>
+                </div>
+                <div class="ct-chevron-b" style="color: rgb(187,187,212);">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 102 140" preserveAspectRatio="none" class="ct-chevron-b__svg"><path fill="currentColor" fill-rule="evenodd" d="m80.378 0 21.49 70-21.49 70H0l21.49-70L0 0z" clip-rule="evenodd"></path></svg>
+                    <div class="ct-chevron-b__content">
+                        <span class="ct-chevron-b__week">SEM 4</span>
+                        <span class="ct-chevron-b__emoji">🎯</span>
+                        <span class="ct-chevron-b__desc">Ella da el primer paso. Vos decidís.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HIGHLIGHTS DEL PLAN (lista de ítems con icono) -->
+        <section class="ct-offer-section">
+            <h2 class="ct-section-title-center">Lo que incluís en tu plan</h2>
+            <div class="ct-item-list">
+                <div class="ct-item-row">
+                    <span class="ct-item-emoji">📘</span>
+                    <div>
+                        <span class="ct-item-title">Vol. I — Fundamentos del Método Reconexión</span>
+                        <span class="ct-item-sub">El giro contrario, los 3 filtros para no perder el hilo y la base psicológica de la atracción</span>
+                    </div>
+                </div>
+                <div class="ct-item-row">
+                    <span class="ct-item-emoji">📋</span>
+                    <div>
+                        <span class="ct-item-title">Vol. II — Plan de Acción 30 días</span>
+                        <span class="ct-item-sub">Misión por misión, día a día, con estructura clara para cada etapa</span>
+                    </div>
+                </div>
+                <div class="ct-item-row">
+                    <span class="ct-item-emoji">💬</span>
+                    <div>
+                        <span class="ct-item-title">Plantillas de mensajes</span>
+                        <span class="ct-item-sub">Qué escribir exactamente en el primer contacto y cómo manejarlo sin quemarte</span>
+                    </div>
+                </div>
+                <div class="ct-item-row">
+                    <span class="ct-item-emoji">🗺️</span>
+                    <div>
+                        <span class="ct-item-title">Matriz de respuesta</span>
+                        <span class="ct-item-sub">Qué hacer según la reacción de ella: fría, caliente, bloqueada o ambigua</span>
+                    </div>
+                </div>
+                <div class="ct-item-row">
+                    <span class="ct-item-emoji">🎬</span>
+                    <div>
+                        <span class="ct-item-title">Guion del primer reencuentro</span>
+                        <span class="ct-item-sub">Cómo manejarte en el cara a cara sin arruinar lo que construíste</span>
+                    </div>
+                </div>
+                <div class="ct-item-row">
+                    <span class="ct-item-emoji">🛡️</span>
+                    <div>
+                        <span class="ct-item-title">Chequeo antisabotaje</span>
+                        <span class="ct-item-sub">Las señales de alerta para saber cuándo estás a punto de arruinar lo avanzado</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMO RESULTADO -->
+        <section class="ct-offer-section" style="background-color: var(--ct-bg-cream);">
+            <h2 class="ct-section-title-center">Lo que vas a lograr</h2>
+            <div class="ct-item-list">
+                <div class="ct-item-row">
+                    <span class="ct-item-emoji">✅</span>
+                    <div>
+                        <span class="ct-item-title">Sabés exactamente qué hacer en cada momento</span>
+                        <span class="ct-item-sub">Sin improvisar mensajes, sin hacer movidas que la alejan más</span>
+                    </div>
+                </div>
+                <div class="ct-item-row">
+                    <span class="ct-item-emoji">✅</span>
+                    <div>
+                        <span class="ct-item-title">Stopás los errores que estaban arruinando todo</span>
+                        <span class="ct-item-sub">El giro contrario te saca del modo súplica antes de que sea tarde</span>
+                    </div>
+                </div>
+                <div class="ct-item-row">
+                    <span class="ct-item-emoji">✅</span>
+                    <div>
+                        <span class="ct-item-title">Ella te escribe primero — sin que vos ruegues</span>
+                        <span class="ct-item-sub">La atracción se reconstruye desde la distancia, no desde la súplica</span>
+                    </div>
+                </div>
+                <div class="ct-item-row">
+                    <span class="ct-item-emoji">✅</span>
+                    <div>
+                        <span class="ct-item-title">Manejás el reencuentro con frialdad y criterio</span>
+                        <span class="ct-item-sub">Tenés el guion, la estructura y el chequeo antisabotaje para ese momento</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ANTES Y DESPUÉS (texto) -->
+        <section class="ct-offer-section">
+            <h2 class="ct-section-title-center">Antes vs. después del Método</h2>
+            <div class="ct-ba-grid">
+                <div class="ct-ba-card">
+                    <h4 class="ct-ba-title">Antes</h4>
+                    <div class="ct-ba-list">
+                        <div class="ct-ba-item">
+                            <svg fill="none" viewBox="0 0 22 22" class="ct-ba-icon"><path fill="#DBDBDB" d="M11 21c5.523 0 10-4.477 10-10S16.523 1 11 1 1 5.477 1 11s4.477 10 10 10"></path><path stroke="#343434" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m7 7 4 4m0 0 4 4m-4-4 4-4m-4 4-4 4m14-4c0 5.523-4.477 10-10 10S1 16.523 1 11 5.477 1 11 1s10 4.477 10 10"></path></svg>
+                            <span>Vivís pendiente del teléfono</span>
+                        </div>
+                        <div class="ct-ba-item">
+                            <svg fill="none" viewBox="0 0 22 22" class="ct-ba-icon"><path fill="#DBDBDB" d="M11 21c5.523 0 10-4.477 10-10S16.523 1 11 1 1 5.477 1 11s4.477 10 10 10"></path><path stroke="#343434" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m7 7 4 4m0 0 4 4m-4-4 4-4m-4 4-4 4m14-4c0 5.523-4.477 10-10 10S1 16.523 1 11 5.477 1 11 1s10 4.477 10 10"></path></svg>
+                            <span>Mandás mensajes que te debilitan</span>
+                        </div>
+                        <div class="ct-ba-item">
+                            <svg fill="none" viewBox="0 0 22 22" class="ct-ba-icon"><path fill="#DBDBDB" d="M11 21c5.523 0 10-4.477 10-10S16.523 1 11 1 1 5.477 1 11s4.477 10 10 10"></path><path stroke="#343434" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m7 7 4 4m0 0 4 4m-4-4 4-4m-4 4-4 4m14-4c0 5.523-4.477 10-10 10S1 16.523 1 11 5.477 1 11 1s10 4.477 10 10"></path></svg>
+                            <span>No dormís, no te concentrás</span>
+                        </div>
+                        <div class="ct-ba-item">
+                            <svg fill="none" viewBox="0 0 22 22" class="ct-ba-icon"><path fill="#DBDBDB" d="M11 21c5.523 0 10-4.477 10-10S16.523 1 11 1 1 5.477 1 11s4.477 10 10 10"></path><path stroke="#343434" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m7 7 4 4m0 0 4 4m-4-4 4-4m-4 4-4 4m14-4c0 5.523-4.477 10-10 10S1 16.523 1 11 5.477 1 11 1s10 4.477 10 10"></path></svg>
+                            <span>Cada reacción de ella te hunde o te levanta</span>
+                        </div>
+                        <div class="ct-ba-item">
+                            <svg fill="none" viewBox="0 0 22 22" class="ct-ba-icon"><path fill="#DBDBDB" d="M11 21c5.523 0 10-4.477 10-10S16.523 1 11 1 1 5.477 1 11s4.477 10 10 10"></path><path stroke="#343434" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m7 7 4 4m0 0 4 4m-4-4 4-4m-4 4-4 4m14-4c0 5.523-4.477 10-10 10S1 16.523 1 11 5.477 1 11 1s10 4.477 10 10"></path></svg>
+                            <span>Actuando desesperado sin darte cuenta</span>
+                        </div>
+                        <div class="ct-ba-item">
+                            <svg fill="none" viewBox="0 0 22 22" class="ct-ba-icon"><path fill="#DBDBDB" d="M11 21c5.523 0 10-4.477 10-10S16.523 1 11 1 1 5.477 1 11s4.477 10 10 10"></path><path stroke="#343434" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m7 7 4 4m0 0 4 4m-4-4 4-4m-4 4-4 4m14-4c0 5.523-4.477 10-10 10S1 16.523 1 11 5.477 1 11 1s10 4.477 10 10"></path></svg>
+                            <span>Confundido, sin saber qué hacer</span>
+                        </div>
+                        <div class="ct-ba-item">
+                            <svg fill="none" viewBox="0 0 22 22" class="ct-ba-icon"><path fill="#DBDBDB" d="M11 21c5.523 0 10-4.477 10-10S16.523 1 11 1 1 5.477 1 11s4.477 10 10 10"></path><path stroke="#343434" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m7 7 4 4m0 0 4 4m-4-4 4-4m-4 4-4 4m14-4c0 5.523-4.477 10-10 10S1 16.523 1 11 5.477 1 11 1s10 4.477 10 10"></path></svg>
+                            <span>Agotado y vacío</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ct-ba-card ct-ba-card--after">
+                    <h4 class="ct-ba-title ct-ba-title--after">Después</h4>
+                    <div class="ct-ba-list">
+                        <div class="ct-ba-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 22 22" class="ct-ba-icon"><path fill="#F8D4B0" d="M21 11c0 5.523-4.477 10-10 10S1 16.523 1 11 5.477 1 11 1s10 4.477 10 10"></path><path fill="#343434" d="M14.622 8.42a.75.75 0 1 0-1.244-.84L14 8zM9.948 14l-.57.487a.75.75 0 0 0 1.192-.067zM8.57 11.23a.75.75 0 1 0-1.14.975l.57-.487zM14 8l-.622-.42-4.051 6 .621.42.622.42 4.052-6zm-4.052 6 .57-.487-1.948-2.282-.57.487-.57.487 1.948 2.282zM21 11h-.75A9.25 9.25 0 0 1 11 20.25v1.5c5.937 0 10.75-4.813 10.75-10.75zM11 21v-.75A9.25 9.25 0 0 1 1.75 11H.25c0 5.937 4.813 10.75 10.75 10.75zM1 11h.75A9.25 9.25 0 0 1 11 1.75V.25C5.063.25.25 5.063.25 11zM11 1v.75A9.25 9.25 0 0 1 20.25 11h1.5C21.75 5.063 16.937.25 11 .25z"></path></svg>
+                            <span>Dormís, laburás, te movés con propósito</span>
+                        </div>
+                        <div class="ct-ba-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 22 22" class="ct-ba-icon"><path fill="#F8D4B0" d="M21 11c0 5.523-4.477 10-10 10S1 16.523 1 11 5.477 1 11 1s10 4.477 10 10"></path><path fill="#343434" d="M14.622 8.42a.75.75 0 1 0-1.244-.84L14 8zM9.948 14l-.57.487a.75.75 0 0 0 1.192-.067zM8.57 11.23a.75.75 0 1 0-1.14.975l.57-.487zM14 8l-.622-.42-4.051 6 .621.42.622.42 4.052-6zm-4.052 6 .57-.487-1.948-2.282-.57.487-.57.487 1.948 2.282zM21 11h-.75A9.25 9.25 0 0 1 11 20.25v1.5c5.937 0 10.75-4.813 10.75-10.75zM11 21v-.75A9.25 9.25 0 0 1 1.75 11H.25c0 5.937 4.813 10.75 10.75 10.75zM1 11h.75A9.25 9.25 0 0 1 11 1.75V.25C5.063.25.25 5.063.25 11zM11 1v.75A9.25 9.25 0 0 1 20.25 11h1.5C21.75 5.063 16.937.25 11 .25z"></path></svg>
+                            <span>Control total sobre tus reacciones</span>
+                        </div>
+                        <div class="ct-ba-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 22 22" class="ct-ba-icon"><path fill="#F8D4B0" d="M21 11c0 5.523-4.477 10-10 10S1 16.523 1 11 5.477 1 11 1s10 4.477 10 10"></path><path fill="#343434" d="M14.622 8.42a.75.75 0 1 0-1.244-.84L14 8zM9.948 14l-.57.487a.75.75 0 0 0 1.192-.067zM8.57 11.23a.75.75 0 1 0-1.14.975l.57-.487zM14 8l-.622-.42-4.051 6 .621.42.622.42 4.052-6zm-4.052 6 .57-.487-1.948-2.282-.57.487-.57.487 1.948 2.282zM21 11h-.75A9.25 9.25 0 0 1 11 20.25v1.5c5.937 0 10.75-4.813 10.75-10.75zM11 21v-.75A9.25 9.25 0 0 1 1.75 11H.25c0 5.937 4.813 10.75 10.75 10.75zM1 11h.75A9.25 9.25 0 0 1 11 1.75V.25C5.063.25.25 5.063.25 11zM11 1v.75A9.25 9.25 0 0 1 20.25 11h1.5C21.75 5.063 16.937.25 11 .25z"></path></svg>
+                            <span>Ella empieza a buscarte</span>
+                        </div>
+                        <div class="ct-ba-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 22 22" class="ct-ba-icon"><path fill="#F8D4B0" d="M21 11c0 5.523-4.477 10-10 10S1 16.523 1 11 5.477 1 11 1s10 4.477 10 10"></path><path fill="#343434" d="M14.622 8.42a.75.75 0 1 0-1.244-.84L14 8zM9.948 14l-.57.487a.75.75 0 0 0 1.192-.067zM8.57 11.23a.75.75 0 1 0-1.14.975l.57-.487zM14 8l-.622-.42-4.051 6 .621.42.622.42 4.052-6zm-4.052 6 .57-.487-1.948-2.282-.57.487-.57.487 1.948 2.282zM21 11h-.75A9.25 9.25 0 0 1 11 20.25v1.5c5.937 0 10.75-4.813 10.75-10.75zM11 21v-.75A9.25 9.25 0 0 1 1.75 11H.25c0 5.937 4.813 10.75 10.75 10.75zM1 11h.75A9.25 9.25 0 0 1 11 1.75V.25C5.063.25.25 5.063.25 11zM11 1v.75A9.25 9.25 0 0 1 20.25 11h1.5C21.75 5.063 16.937.25 11 .25z"></path></svg>
+                            <span>Sabés qué responder y cuándo callar</span>
+                        </div>
+                        <div class="ct-ba-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 22 22" class="ct-ba-icon"><path fill="#F8D4B0" d="M21 11c0 5.523-4.477 10-10 10S1 16.523 1 11 5.477 1 11 1s10 4.477 10 10"></path><path fill="#343434" d="M14.622 8.42a.75.75 0 1 0-1.244-.84L14 8zM9.948 14l-.57.487a.75.75 0 0 0 1.192-.067zM8.57 11.23a.75.75 0 1 0-1.14.975l.57-.487zM14 8l-.622-.42-4.051 6 .621.42.622.42 4.052-6zm-4.052 6 .57-.487-1.948-2.282-.57.487-.57.487 1.948 2.282zM21 11h-.75A9.25 9.25 0 0 1 11 20.25v1.5c5.937 0 10.75-4.813 10.75-10.75zM11 21v-.75A9.25 9.25 0 0 1 1.75 11H.25c0 5.937 4.813 10.75 10.75 10.75zM1 11h.75A9.25 9.25 0 0 1 11 1.75V.25C5.063.25.25 5.063.25 11zM11 1v.75A9.25 9.25 0 0 1 20.25 11h1.5C21.75 5.063 16.937.25 11 .25z"></path></svg>
+                            <span>Manejás el reencuentro en control</span>
+                        </div>
+                        <div class="ct-ba-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 22 22" class="ct-ba-icon"><path fill="#F8D4B0" d="M21 11c0 5.523-4.477 10-10 10S1 16.523 1 11 5.477 1 11 1s10 4.477 10 10"></path><path fill="#343434" d="M14.622 8.42a.75.75 0 1 0-1.244-.84L14 8zM9.948 14l-.57.487a.75.75 0 0 0 1.192-.067zM8.57 11.23a.75.75 0 1 0-1.14.975l.57-.487zM14 8l-.622-.42-4.051 6 .621.42.622.42 4.052-6zm-4.052 6 .57-.487-1.948-2.282-.57.487-.57.487 1.948 2.282zM21 11h-.75A9.25 9.25 0 0 1 11 20.25v1.5c5.937 0 10.75-4.813 10.75-10.75zM11 21v-.75A9.25 9.25 0 0 1 1.75 11H.25c0 5.937 4.813 10.75 10.75 10.75zM1 11h.75A9.25 9.25 0 0 1 11 1.75V.25C5.063.25.25 5.063.25 11zM11 1v.75A9.25 9.25 0 0 1 20.25 11h1.5C21.75 5.063 16.937.25 11 .25z"></path></svg>
+                            <span>Con energía, claridad y propósito</span>
+                        </div>
+                        <div class="ct-ba-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 22 22" class="ct-ba-icon"><path fill="#F8D4B0" d="M21 11c0 5.523-4.477 10-10 10S1 16.523 1 11 5.477 1 11 1s10 4.477 10 10"></path><path fill="#343434" d="M14.622 8.42a.75.75 0 1 0-1.244-.84L14 8zM9.948 14l-.57.487a.75.75 0 0 0 1.192-.067zM8.57 11.23a.75.75 0 1 0-1.14.975l.57-.487zM14 8l-.622-.42-4.051 6 .621.42.622.42 4.052-6zm-4.052 6 .57-.487-1.948-2.282-.57.487-.57.487 1.948 2.282zM21 11h-.75A9.25 9.25 0 0 1 11 20.25v1.5c5.937 0 10.75-4.813 10.75-10.75zM11 21v-.75A9.25 9.25 0 0 1 1.75 11H.25c0 5.937 4.813 10.75 10.75 10.75zM1 11h.75A9.25 9.25 0 0 1 11 1.75V.25C5.063.25.25 5.063.25 11zM11 1v.75A9.25 9.25 0 0 1 20.25 11h1.5C21.75 5.063 16.937.25 11 .25z"></path></svg>
+                            <span>Vos decidís si ella vuelve o no</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ ACCORDION -->
+        <section class="ct-offer-section">
+            <h2 class="ct-section-title-center"><strong>Preguntas frecuentes</strong></h2>
+            <div class="ct-faq-b">
+                <div class="ct-faq-b__item">
+                    <div class="ct-faq-b__q" onclick="toggleFaq(this)">
+                        <span>¿Funciona si ella me tiene bloqueado?</span>
+                        <svg class="ct-faq-b__arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 3L7 9L13 3" stroke="#343434" stroke-width="2" stroke-linecap="round"></path></svg>
+                    </div>
+                    <div class="ct-faq-b__a">Sí. El Vol. I tiene un protocolo específico para contacto cero y bloqueo. La Matriz de respuesta cubre ese escenario: qué hacer cuando no hay canal abierto.</div>
+                </div>
+                <div class="ct-faq-b__item">
+                    <div class="ct-faq-b__q" onclick="toggleFaq(this)">
+                        <span>¿Qué diferencia a este método de otros consejos?</span>
+                        <svg class="ct-faq-b__arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 3L7 9L13 3" stroke="#343434" stroke-width="2" stroke-linecap="round"></path></svg>
+                    </div>
+                    <div class="ct-faq-b__a">No es "conseguí a otra" ni "ponete a laburar". Es un sistema estructurado de 30 días con misiones concretas, plantillas de mensajes y guion del primer reencuentro. Nada genérico.</div>
+                </div>
+                <div class="ct-faq-b__item">
+                    <div class="ct-faq-b__q" onclick="toggleFaq(this)">
+                        <span>¿Cómo sé si voy bien o estoy saboteándome?</span>
+                        <svg class="ct-faq-b__arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 3L7 9L13 3" stroke="#343434" stroke-width="2" stroke-linecap="round"></path></svg>
+                    </div>
+                    <div class="ct-faq-b__a">El plan incluye el Chequeo antisabotaje: un listado de señales de alerta para identificar si estás a punto de arruinar lo que construíste. Lo revisás antes de cada acción clave.</div>
+                </div>
+                <div class="ct-faq-b__item">
+                    <div class="ct-faq-b__q" onclick="toggleFaq(this)">
+                        <span>¿Cuándo accedo al material?</span>
+                        <svg class="ct-faq-b__arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 3L7 9L13 3" stroke="#343434" stroke-width="2" stroke-linecap="round"></path></svg>
+                    </div>
+                    <div class="ct-faq-b__a">Al instante. En cuanto completás el pago recibís los dos volúmenes en PDF + todas las herramientas. Sin espera, sin videos que esperar. Lo tenés ya.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- REVIEWS -->
+        <section class="ct-offer-section" style="background-color: var(--ct-bg-cream);">
+            <h2 class="ct-section-title-center"><strong>Lo que dicen los que lo aplicaron</strong></h2>
+
+            <div class="ct-reviews-list">
+                <div class="ct-review-card">
+                    <div class="ct-review-header-row">
+                        <div class="ct-review-avatar" style="background-color: #FEE7C8;">MG</div>
+                        <div>
+                            <div class="ct-review-name">Matías G.</div>
+                            <div class="ct-review-meta">Buenos Aires · ★★★★★</div>
+                        </div>
+                        <span class="ct-review-verified">✓ Verificado</span>
+                    </div>
+                    <h4 class="ct-review-title">“A la semana 3 ella me escribió primero”</h4>
+                    <p class="ct-review-body">Empecé sin creer. Apliqué el giro contrario y dejé de mandarle mensajes. A los 20 días ella me contactó. No sé si volvemos, pero yo ya soy otro.”</p>
+                </div>
+                <div class="ct-review-card">
+                    <div class="ct-review-header-row">
+                        <div class="ct-review-avatar" style="background-color: #D8F0E8;">FR</div>
+                        <div>
+                            <div class="ct-review-name">Federico R.</div>
+                            <div class="ct-review-meta">Córdoba · ★★★★★</div>
+                        </div>
+                        <span class="ct-review-verified">✓ Verificado</span>
+                    </div>
+                    <h4 class="ct-review-title">“Dejé de revisar el teléfono cada 5 minutos”</h4>
+                    <p class="ct-review-body">Retomé el gimnasio, volví al trabajo con enfoque. El chequeo antisabotaje me salvó dos veces de mandar mensajes estupüdos. Ella empezó a escribirme en semana 2.”</p>
+                </div>
+                <div class="ct-review-card">
+                    <div class="ct-review-header-row">
+                        <div class="ct-review-avatar" style="background-color: #E8E8F8;">JP</div>
+                        <div>
+                            <div class="ct-review-name">Juan P.</div>
+                            <div class="ct-review-meta">Rosario · ★★★★☆</div>
+                        </div>
+                        <span class="ct-review-verified">✓ Verificado</span>
+                    </div>
+                    <h4 class="ct-review-title">“Las misiones diarias son directas y sin vuelta”</h4>
+                    <p class="ct-review-body">No hay filosofía de más. Un día a la vez. La matriz de respuesta me ayudó cuando ella me mandó un mensaje ambüguo después de 3 semanas. La manejé bien.”</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA FINAL -->
+        <section class="ct-offer-section" style="text-align: center;">
+            <h2 class="ct-section-title-center">Empezá tus 30 días ahora</h2>
+            <p style="font-size: 13px; color: var(--ct-text-light); margin-bottom: 20px; line-height: 1.5;">Acceso inmediato · Precios en ARS · Garantía 30 días sin riesgo</p>
+            <a href="#ct-pricing" class="ct-cta-btn ct-btn-pulse">VER PLANES Y PRECIOS</a>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="ct-app-footer">
+            <div class="ct-app-footer-links">
+                <a href="#">Términos y condiciones</a> &bull; <a href="#">Políticas de privacidad</a>
+            </div>
+            <p class="ct-app-copy">© 2026 Crea Tu Versión. Todos los derechos reservados.</p>
+            <p class="ct-app-copy" style="margin-top: 4px;">Contacto: info@creatuversion.com.ar</p>
+        </footer>
+
+    </div><!-- /ct-offer-wrapper -->
+
+</div><!-- /ct-app-card -->
+
+<script>
+var quizData = { step1:'', step2:'', step3:'', step4:[], step6:'' };
+
+function nextStep(current, val) {
+    quizData['step' + current] = val;
+    document.querySelector('.ct-quiz-step[data-step="'+current+'"]').classList.remove('ct-quiz-step--active');
+    var next = current + 1;
+    document.querySelector('.ct-quiz-step[data-step="'+next+'"]').classList.add('ct-quiz-step--active');
+    updateProgress(next);
+}
+
+function updateProgress(step) {
+    document.getElementById('ct-step-indicator').textContent = 'Paso ' + step + ' de 6';
+    document.getElementById('ct-progress-fill').style.width = ((step/6)*100) + '%';
+}
+
+function processStep4() {
+    var checks = document.querySelectorAll('input[name="errors"]:checked');
+    if (checks.length === 0) { alert('Seleccioná al menos una opción.'); return; }
+    quizData.step4 = Array.from(checks).map(function(c){ return c.value; });
+    document.querySelector('.ct-quiz-step[data-step="4"]').classList.remove('ct-quiz-step--active');
+    document.querySelector('.ct-quiz-step[data-step="5"]').classList.add('ct-quiz-step--active');
+    updateProgress(5);
+}
+
+function finishQuiz(val) {
+    quizData.step6 = val;
+
+    var statusVal = "Ruptura de meses";
+    if (quizData.step1 === 'Menos de 2 semanas') statusVal = "Ruptura reciente";
+    else if (quizData.step1 === 'Entre 2 semanas y 2 meses') statusVal = "Ruptura de semanas";
+    var sEl = document.getElementById('ct-status-value');
+    if (sEl) sEl.textContent = statusVal;
+
+    var goalVal = "Hacer que te extrañe";
+    if (quizData.step3 === 'Me bloqueó de todos lados / Contacto Cero absoluto') goalVal = "Que te desbloquee y busque";
+    else if (quizData.step3 === 'Respuestas frías, cortantes o me deja en visto') goalVal = "Cortar contacto y reatraer";
+    var gEl = document.getElementById('ct-goal-value');
+    if (gEl) gEl.textContent = goalVal;
+
+    document.getElementById('ct-quiz-wrapper').classList.add('ct-hidden');
+    var loader = document.getElementById('ct-loading-wrapper');
+    loader.classList.remove('ct-hidden');
+
+    setTimeout(function(){ document.getElementById('loading-step-1').classList.add('ct-step-done'); }, 1200);
+    setTimeout(function(){
+        document.getElementById('loading-step-2').classList.add('ct-step-done');
+        document.getElementById('ct-loading-title').textContent = 'Calculando compatibilidad...';
+    }, 2400);
+    setTimeout(function(){
+        document.getElementById('loading-step-3').classList.add('ct-step-done');
+        document.getElementById('ct-loading-title').textContent = 'Estructurando tu plan...';
+    }, 3600);
+    setTimeout(function(){
+        loader.classList.add('ct-hidden');
+        document.getElementById('ct-offer-wrapper').classList.remove('ct-hidden');
+        window.scrollTo(0, 0);
+        startCountdown();
+    }, 4800);
+}
+
+function startCountdown() {
+    var key = "ct_timer_b_seconds";
+    var duration = 9 * 60 + 40;
+    var secs = parseInt(localStorage.getItem(key), 10) || duration;
+
+    var el1 = document.getElementById("ct-countdown-timer");
+    var el2 = document.getElementById("ct-plans-countdown-timer");
+
+    function tick() {
+        var m = Math.floor(secs / 60);
+        var s = secs % 60;
+        var str = (m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+        if (el1) el1.textContent = str;
+        if (el2) el2.textContent = str;
+        secs = secs <= 0 ? duration : secs - 1;
+        localStorage.setItem(key, secs);
+    }
+    tick();
+    setInterval(tick, 1000);
+}
+
+function selectPlan(radio, original, current) {
+    document.querySelectorAll('.ct-radio-plan').forEach(function(el){ el.classList.remove('ct-radio-plan--selected'); });
+    radio.closest('.ct-radio-plan').classList.add('ct-radio-plan--selected');
+    document.querySelectorAll('.ct-radio-indicator').forEach(function(el){ el.classList.remove('ct-radio-indicator--active'); });
+    document.querySelectorAll('.ct-radio-dot').forEach(function(el){ el.classList.remove('ct-radio-dot--active'); });
+    radio.nextElementSibling.querySelector('.ct-radio-indicator').classList.add('ct-radio-indicator--active');
+    radio.nextElementSibling.querySelector('.ct-radio-dot').classList.add('ct-radio-dot--active');
+}
+
+function toggleFaq(el) {
+    var answer = el.nextElementSibling;
+    var arrow = el.querySelector('.ct-faq-b__arrow');
+    var isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+    answer.style.maxHeight = isOpen ? '0px' : answer.scrollHeight + 'px';
+    answer.style.opacity = isOpen ? '0' : '1';
+    arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+}
+</script>
+
+<style>
+:root {
+    --ct-gold: #9B7C50;
+    --ct-gold-light: #C9A673;
+    --ct-bg-cream: #FCF7EF;
+    --ct-bg-green: #DEFDCE;
+    --ct-text-dark: #343434;
+    --ct-text-light: #747474;
+    --ct-red: #E53935;
+    --ct-green: #29B17D;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; background-color: #f5efe6; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--ct-text-dark);
+    background-color: #f5efe6;
+    font-size: 15px;
+    line-height: 1.5;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.ct-app-card {
+    width: 100%;
+    max-width: 440px;
+    background: #fff;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.ct-hidden { display: none !important; }
+
+/* ---- QUIZ ---- */
+.ct-flow-container {
+    padding: 40px 24px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
+    min-height: 100vh;
+}
+
+.ct-quiz-progress-bar {
+    width: 100%; height: 6px;
+    background: #f1f1f1; border-radius: 3px;
+    overflow: hidden; margin-bottom: 15px;
+}
+
+.ct-progress-fill {
+    height: 100%;
+    background: var(--ct-gold);
+    transition: width 0.3s ease;
+}
+
+.ct-quiz-steps-header {
+    font-size: 12px; font-weight: 600;
+    color: var(--ct-text-light); margin-bottom: 25px;
+}
+
+.ct-quiz-step { display: none; animation: fadeIn 0.4s ease forwards; }
+.ct-quiz-step--active { display: block; }
+.ct-quiz-step h2 { font-size: 21px; font-weight: 600; line-height: 1.25; margin-bottom: 10px; }
+
+.ct-step-subtitle { font-size: 13px; color: var(--ct-text-light); margin-bottom: 30px; }
+
+.ct-options-grid { display: flex; flex-direction: column; gap: 12px; }
+
+.ct-option-card {
+    width: 100%; background: #fff;
+    border: 1.5px solid #eaeaea; border-radius: 10px;
+    padding: 18px; font-family: inherit;
+    font-size: 14.5px; font-weight: 500;
+    color: var(--ct-text-dark); text-align: left;
+    cursor: pointer; transition: all 0.2s ease;
+}
+.ct-option-card:hover { border-color: var(--ct-gold); }
+
+.ct-checkbox-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
+
+.ct-checkbox-card {
+    display: flex; align-items: center; gap: 12px;
+    border: 1.5px solid #eaeaea; border-radius: 10px;
+    padding: 16px; cursor: pointer; transition: border-color 0.2s;
+}
+.ct-checkbox-card input { width: 18px; height: 18px; accent-color: var(--ct-gold); }
+.ct-checkbox-card:hover { border-color: var(--ct-gold); }
+.ct-checkbox-text { font-size: 13.5px; font-weight: 500; }
+
+/* ---- LOADER ---- */
+.ct-loader-content {
+    display: flex; flex-direction: column;
+    align-items: center; text-align: center; margin-top: 60px;
+}
+.ct-spinner {
+    width: 50px; height: 50px;
+    border: 3.5px solid #f1f1f1;
+    border-top: 3.5px solid var(--ct-gold);
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+    margin-bottom: 25px;
+}
+#ct-loading-title { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+#ct-loading-subtitle { font-size: 13px; color: var(--ct-text-light); margin-bottom: 40px; }
+.ct-loading-steps { display: flex; flex-direction: column; gap: 15px; text-align: left; max-width: 320px; }
+.ct-loading-step-item {
+    font-size: 13.5px; color: var(--ct-text-light);
+    display: flex; align-items: center; gap: 10px;
+    opacity: 0.5; transition: opacity 0.3s ease;
+}
+.ct-tick {
+    display: inline-flex; width: 20px; height: 20px;
+    background: #eaeaea; color: #fff; border-radius: 50%;
+    align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700;
+}
+.ct-step-done { opacity: 1; color: var(--ct-text-dark); }
+.ct-step-done .ct-tick { background: var(--ct-green); }
+
+/* ---- OFFER GENERAL ---- */
+.ct-offer-section { padding: 24px 16px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+
+.ct-section-title-center {
+    font-size: 19px; font-weight: 700;
+    text-align: center; line-height: 1.3;
+    margin-bottom: 16px;
+}
+
+.ct-gold-text { color: var(--ct-gold); }
+
+/* ---- STICKY HEADER ---- */
+.ct-sticky-header {
+    position: fixed; top: 0; width: 100%; max-width: 440px;
+    height: 60px; background: #fff;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    z-index: 9999; display: flex; align-items: center; padding: 0 16px;
+}
+.ct-sticky-header__content { width: 100%; display: flex; justify-content: space-between; align-items: center; }
+.ct-sticky-header__left { display: flex; flex-direction: column; }
+.ct-sticky-header__label { font-size: 10px; color: var(--ct-text-light); }
+.ct-sticky-header__timer { font-size: 18px; font-weight: 700; color: var(--ct-gold); }
+.ct-header-cta-btn {
+    background: var(--ct-gold); color: #fff;
+    text-decoration: none; font-size: 11px; font-weight: 700;
+    padding: 8px 14px; border-radius: 6px; letter-spacing: 0.5px;
+}
+
+/* ---- COMPARE IMAGE ---- */
+.ct-compare-image-section { padding: 0 16px 16px; }
+.ct-compare-image-wrapper { position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+.ct-compare-tabs-overlay {
+    position: absolute; top: 12px; left: 0; right: 0;
+    display: flex; justify-content: space-between; gap: 12px;
+    padding: 0 18px; z-index: 10;
+}
+.ct-tab {
+    flex: 1; text-align: center; padding: 5px 0;
+    font-size: 13px; font-weight: 700; border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+.ct-tab--now { background: rgba(255,255,255,0.92); color: var(--ct-red); }
+.ct-tab--goal { background: var(--ct-gold); color: #fff; }
+.ct-compare-hero-img { width: 100%; height: auto; display: block; }
+
+/* ---- MINI CARDS ---- */
+.ct-mini-cards-row { display: flex; gap: 10px; }
+.ct-mini-card-b {
+    flex: 1; display: flex; align-items: center; gap: 8px;
+    background: #f9f9f9; border-radius: 10px; padding: 10px 12px;
+}
+.ct-mini-icon { width: 22px; height: 22px; flex-shrink: 0; }
+.ct-mini-label { display: block; font-size: 9.5px; font-weight: 600; color: var(--ct-text-light); text-transform: uppercase; }
+.ct-mini-val { display: block; font-size: 11px; font-weight: 700; margin-top: -2px; }
+
+/* ---- STATS ---- */
+.ct-stats-section { padding: 16px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+.ct-stats-grid { display: flex; gap: 12px; }
+.ct-stats-col { flex: 1; display: flex; flex-direction: column; gap: 16px; }
+.ct-stats-col--after { background: rgba(155,124,80,0.03); border-radius: 8px; padding: 10px; }
+.ct-stat-block { }
+.ct-stat-title { font-size: 10px; font-weight: 600; color: var(--ct-text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+.ct-stat-val { font-size: 13px; font-weight: 700; }
+.ct-val--red { color: var(--ct-red); }
+.ct-val--green { color: var(--ct-green); }
+.ct-lines { display: flex; gap: 4px; margin-top: 4px; }
+.ct-line { flex: 1; height: 5px; background: #eaeaea; border-radius: 3px; }
+.ct-line--red.ct-line--fill { background: var(--ct-red); }
+.ct-line--green.ct-line--fill { background: var(--ct-green); }
+.ct-slider-track { position: relative; width: 100%; height: 5px; background: #eaeaea; border-radius: 3px; margin-top: 6px; }
+.ct-slider-fill { position: absolute; left: 0; top: 0; height: 100%; border-radius: 3px; }
+.ct-slider-thumb {
+    position: absolute; top: 50%; transform: translate(-50%, -50%);
+    width: 11px; height: 11px; border-radius: 50%;
+}
+.ct-stats-disclaimer { font-size: 10px; color: var(--ct-text-light); margin-top: 12px; font-weight: 600; }
+
+/* ---- PRICING ---- */
+.ct-pricing-section { }
+.ct-plans-timer-row {
+    background: #fff8f0; border: 1px solid rgba(155,124,80,0.2);
+    border-radius: 8px; padding: 10px 14px;
+    text-align: center; font-size: 12.5px; font-weight: 600;
+    margin-bottom: 16px; color: var(--ct-text-dark);
+}
+
+.ct-radio-plans { display: flex; flex-direction: column; gap: 12px; }
+
+.ct-radio-plan {
+    display: block; position: relative;
+    border: 1.5px solid #eaeaea; border-radius: 10px;
+    overflow: hidden; cursor: pointer; transition: border-color 0.2s;
+}
+.ct-radio-plan input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
+.ct-radio-plan--popular { border-color: var(--ct-gold); }
+.ct-radio-plan--selected { border-color: var(--ct-gold); background: rgba(155,124,80,0.02); }
+
+.ct-popular-badge {
+    background: var(--ct-gold); color: #fff;
+    font-size: 10px; font-weight: 700;
+    text-align: center; padding: 5px;
+    letter-spacing: 0.5px;
+}
+
+.ct-radio-body { display: flex; align-items: center; gap: 12px; padding: 14px; }
+
+.ct-radio-indicator {
+    width: 22px; height: 22px; border-radius: 50%;
+    border: 2px solid #ccc; background: #fff;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; transition: border-color 0.2s;
+}
+.ct-radio-indicator--active { border-color: var(--ct-gold); }
+.ct-radio-dot { width: 11px; height: 11px; border-radius: 50%; background: transparent; transition: background 0.2s; }
+.ct-radio-dot--active { background: var(--ct-gold); }
+
+.ct-radio-info { flex: 1; }
+.ct-radio-name { font-size: 12px; font-weight: 700; color: var(--ct-gold); letter-spacing: 0.5px; margin-bottom: 2px; }
+.ct-radio-desc { font-size: 11.5px; font-weight: 500; color: var(--ct-text-dark); }
+
+.ct-radio-price-box {
+    background: linear-gradient(180deg, #FFEFDF 0%, #FFF 100%);
+    border-radius: 6px; padding: 6px 10px;
+    min-width: 80px; text-align: center;
+}
+.ct-radio-price-box--active { background: linear-gradient(180deg, #f5e8d0 0%, #fff 100%); }
+.ct-radio-old-price { font-size: 10px; text-decoration: line-through; color: var(--ct-text-light); }
+.ct-radio-price { font-size: 15px; font-weight: 700; color: var(--ct-text-dark); }
+
+.ct-secure-row {
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; font-size: 11px; color: var(--ct-text-light);
+    font-weight: 600; margin-top: 12px;
+}
+.ct-secure-svg { width: 16px; height: 16px; }
+
+/* ---- CHEVRONS ---- */
+.ct-chevrons-b {
+    display: flex; overflow-x: auto; gap: 0;
+    margin: 0 -16px; scrollbar-width: none;
+}
+.ct-chevrons-b::-webkit-scrollbar { display: none; }
+
+.ct-chevron-b { position: relative; flex-shrink: 0; width: 25%; min-width: 80px; }
+.ct-chevron-b__svg { width: 100%; height: 90px; display: block; }
+.ct-chevron-b__content {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    z-index: 1; padding: 4px 12px 4px 4px; gap: 2px;
+}
+.ct-chevron-b__week { font-size: 8px; font-weight: 700; color: #343434; text-transform: uppercase; letter-spacing: 0.5px; }
+.ct-chevron-b__icon { width: 22px; height: 22px; }
+.ct-chevron-b__desc { font-size: 9px; font-weight: 600; color: #343434; text-align: center; line-height: 1.2; }
+
+/* ---- ITEM LIST ---- */
+.ct-item-list { display: flex; flex-direction: column; gap: 10px; }
+.ct-item-row {
+    display: flex; align-items: center; gap: 12px;
+    background: #fff; border-radius: 10px; padding: 12px;
+    border: 1px solid rgba(0,0,0,0.04);
+}
+.ct-item-icon { width: 28px; height: 28px; flex-shrink: 0; }
+.ct-item-title { display: block; font-size: 12px; font-weight: 700; margin-bottom: 2px; }
+.ct-item-sub { display: block; font-size: 10.5px; color: var(--ct-text-light); line-height: 1.3; }
+
+/* ---- BEFORE / AFTER ---- */
+.ct-ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+.ct-ba-card { background: #fff; border-radius: 10px; padding: 14px; border: 1px solid rgba(0,0,0,0.04); }
+.ct-ba-card--after { background: rgba(155,124,80,0.02); border-color: rgba(155,124,80,0.1); }
+.ct-ba-title { font-size: 13px; font-weight: 700; margin-bottom: 10px; }
+.ct-ba-title--after { color: var(--ct-gold); }
+.ct-ba-list { display: flex; flex-direction: column; gap: 8px; }
+.ct-ba-item { display: flex; align-items: center; gap: 7px; font-size: 10.5px; line-height: 1.25; }
+.ct-ba-icon { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* ---- FAQ ACCORDION ---- */
+.ct-faq-b { display: flex; flex-direction: column; gap: 0; margin-top: 10px; }
+.ct-faq-b__item { border-bottom: 1px solid #f1f1f1; padding: 12px 0; }
+.ct-faq-b__q {
+    display: flex; align-items: center; justify-content: space-between;
+    cursor: pointer; font-size: 13px; font-weight: 600;
+    padding-right: 4px;
+}
+.ct-faq-b__arrow { flex-shrink: 0; transition: transform 0.2s ease; }
+.ct-faq-b__a {
+    font-size: 12.5px; color: var(--ct-text-light);
+    line-height: 1.45; max-height: 0; opacity: 0;
+    overflow: hidden; transition: max-height 0.3s ease, opacity 0.3s ease;
+    margin-top: 6px;
+}
+
+/* ---- REVIEWS ---- */
+.ct-reviews-list { display: flex; flex-direction: column; gap: 14px; margin-top: 10px; }
+.ct-review-card { background: #fff; border-radius: 10px; padding: 16px; border: 1px solid rgba(0,0,0,0.04); }
+.ct-review-header-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.ct-review-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: var(--ct-text-dark);
+    flex-shrink: 0;
+}
+.ct-review-name { font-size: 13px; font-weight: 700; }
+.ct-review-meta { font-size: 10px; color: var(--ct-text-light); }
+.ct-review-verified { margin-left: auto; font-size: 10px; font-weight: 700; color: var(--ct-green); white-space: nowrap; }
+.ct-review-title { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+.ct-review-body { font-size: 12px; color: var(--ct-text-light); line-height: 1.45; }
+
+/* ---- CTA ---- */
+.ct-cta-btn {
+    display: block; width: 100%; text-align: center;
+    background: var(--ct-gold); color: #fff;
+    text-decoration: none; font-size: 13.5px; font-weight: 700;
+    padding: 16px 20px; border-radius: 8px;
+    border: none; cursor: pointer;
+    box-shadow: 0 4px 15px rgba(155,124,80,0.3);
+}
+.ct-cta-btn:hover { background: var(--ct-gold-light); }
+
+/* ---- FOOTER ---- */
+.ct-app-footer { padding: 24px 16px 40px; text-align: center; }
+.ct-app-footer-links { margin-bottom: 8px; }
+.ct-app-footer-links a { color: var(--ct-text-light); text-decoration: none; font-size: 11px; }
+.ct-app-copy { font-size: 10.5px; color: var(--ct-text-light); }
+
+/* ---- ANIMACIONES ---- */
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes ctPulse {
+    0% { box-shadow: 0 0 0 0 rgba(155,124,80,0.7); }
+    70% { box-shadow: 0 0 0 12px rgba(155,124,80,0); }
+    100% { box-shadow: 0 0 0 0 rgba(155,124,80,0); }
+}
+.ct-btn-pulse { animation: ctPulse 2s infinite; }
+
+@media (hover: hover) {
+    .ct-option-card:hover { border-color: var(--ct-gold); background: rgba(155,124,80,0.02); }
+    .ct-checkbox-card:hover { border-color: var(--ct-gold); }
+    .ct-cta-btn:hover { background: var(--ct-gold-light); }
+}
+</style>
+
+</body>
+</html>

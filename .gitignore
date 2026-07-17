@@ -1,0 +1,18 @@
+# Scripts temporales de Python (herramientas de desarrollo)
+*.py
+__pycache__/
+
+# Archivos temporales
+*.tmp
+*.bak
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# VS Code
+.vscode/
+
+# Archivos de trabajo temporales
+all_reconstructed_styles.css
