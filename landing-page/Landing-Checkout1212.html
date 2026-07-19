@@ -720,6 +720,44 @@ function ctEnsureCheckoutUrgency(){
         button.insertAdjacentElement('afterend', note);
     });
 }
+function ctEnsureSummaryDescription(){
+    var descriptions = [
+        {
+            pattern:/fundamentos de reconexi[oó]n/i,
+            text:'Guía teórica para entender qué lo alejó, recuperar tu centro y cambiar la dinámica.'
+        },
+        {
+            pattern:/m[eé]todo reconexi[oó]n 30 d[ií]as/i,
+            text:'Fundamentos + plan práctico de 30 días + mensajes + tracker editable en Excel.'
+        },
+        {
+            pattern:/colecci[oó]n reconexi[oó]n total/i,
+            text:'Todo el Método Reconexión + la guía para convertirte en una mujer segura, magnética y difícil de perder.'
+        }
+    ];
+
+    document.querySelectorAll('#ct-checkout-slot .wfacp_order_summary_item_name').forEach(function(name){
+        var productName = (name.textContent || '').trim();
+        var match = descriptions.find(function(item){ return item.pattern.test(productName); });
+        var current = name.parentElement ? name.parentElement.querySelector('.ct-order-summary-description') : null;
+
+        if (!match) {
+            if (current) current.remove();
+            return;
+        }
+        if (!current) {
+            current = document.createElement('span');
+            current.className = 'ct-order-summary-description';
+            name.insertAdjacentElement('afterend', current);
+        }
+        if (current.textContent !== match.text) current.textContent = match.text;
+    });
+}
+var ctSummaryDescriptionJob = null;
+function ctScheduleSummaryDescription(){
+    clearTimeout(ctSummaryDescriptionJob);
+    ctSummaryDescriptionJob = setTimeout(ctEnsureSummaryDescription, 40);
+}
 var ctWired = false;
 function ctWireCheckout(){
     if (ctWired) return;
@@ -731,10 +769,15 @@ function ctWireCheckout(){
     // foco al pagar: observar SOLO cambios de clase (liviano, sin childList)
     var steps = document.querySelector('.wfacp_form_steps') || slot;
     try { new MutationObserver(ctSyncFocus).observe(steps, {attributes:true, subtree:true, attributeFilter:['class']}); } catch(e){}
+    // El resumen se reconstruye por AJAX al cambiar de plan; reponer su descripción cuando ocurra.
+    try { new MutationObserver(ctScheduleSummaryDescription).observe(slot, {childList:true, subtree:true}); } catch(e){}
     ctSyncFocus();
     ctEnsureCheckoutUrgency();
+    ctEnsureSummaryDescription();
     setTimeout(ctEnsureCheckoutUrgency, 300);
     setTimeout(ctEnsureCheckoutUrgency, 900);
+    setTimeout(ctEnsureSummaryDescription, 300);
+    setTimeout(ctEnsureSummaryDescription, 900);
 }
 document.addEventListener('DOMContentLoaded', function(){
     ctWireCheckout();
@@ -750,6 +793,8 @@ document.addEventListener('click', function(e){
     setTimeout(ctSyncFocus, 20);
     setTimeout(ctSyncFocus, 180);
     setTimeout(ctSyncFocus, 520);
+    setTimeout(ctEnsureSummaryDescription, 180);
+    setTimeout(ctEnsureSummaryDescription, 520);
 }, true);
 
 // Regreso seguro al selector: usa el control nativo de FunnelKit para conservar el estado.
@@ -771,6 +816,7 @@ document.addEventListener('click', function(e){
     if (window.jQuery) { window.jQuery(radio).prop('checked', true).trigger('change'); }
     else { radio.checked = true; radio.dispatchEvent(new Event('change', {bubbles:true})); }
     setTimeout(ctEnsureCheckoutUrgency, 250);
+    setTimeout(ctEnsureSummaryDescription, 250);
 }, true);
 </script>
 
@@ -1293,6 +1339,19 @@ body #wfacp-e-form #product_switching_field .wfacp_product_price_sec {
     text-decoration:none!important;
     pointer-events:none!important;
     cursor:default!important;
+}
+#ct-checkout-slot .wfacp_order_summary_container .ct-order-summary-description {
+    display:block!important;
+    max-width:330px;
+    margin-top:4px;
+    color:var(--ct-text-light)!important;
+    font-family:'Poppins',sans-serif!important;
+    font-size:11.5px!important;
+    font-weight:400!important;
+    line-height:1.45!important;
+    white-space:normal!important;
+    word-break:normal!important;
+    overflow-wrap:break-word!important;
 }
 #ct-checkout-slot .wfacp_order_summary_container td.product-total,
 #ct-checkout-slot .wfacp_order_summary_container th.product-total {
