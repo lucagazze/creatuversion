@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Test de Reconexión - Método Reconexión</title>
+    <title>Checkout — Crea tu Versión</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
 </head>
@@ -12,137 +12,7 @@
 <div class="ct-app-card">
 
     <!-- ================================================================
-         1. QUIZ FUNNEL
-         ================================================================ -->
-    <div id="ct-quiz-wrapper" class="ct-flow-container ct-hidden">
-        <div class="ct-quiz-progress-bar">
-            <div id="ct-progress-fill" class="ct-progress-fill" style="width: 14.2%;"></div>
-        </div>
-        <div class="ct-quiz-steps-header">
-            <span id="ct-step-indicator">Paso 1 de 7</span>
-        </div>
-
-        <div class="ct-quiz-step ct-quiz-step--active" data-step="1">
-            <h2>¿Qué edad tenés?</h2>
-            <p class="ct-step-subtitle">Empezá seleccionando tu edad para personalizar tu plan.</p>
-            <div class="ct-age-grid">
-                <button class="ct-age-card" onclick="nextStep(1,'15-29')">
-                    <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/18-29-80962b9c.webp" alt="15-29" loading="lazy">
-                    <span>15-29</span>
-                </button>
-                <button class="ct-age-card" onclick="nextStep(1,'30-39')">
-                    <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/30-39-a35bf6e3.webp" alt="30-39" loading="lazy">
-                    <span>30-39</span>
-                </button>
-                <button class="ct-age-card" onclick="nextStep(1,'40-49')">
-                    <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/40-49-1507ffa0.webp" alt="40-49" loading="lazy">
-                    <span>40-49</span>
-                </button>
-                <button class="ct-age-card" onclick="nextStep(1,'50+')">
-                    <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/50-2cf38bb3.webp" alt="50+" loading="lazy">
-                    <span>50+</span>
-                </button>
-            </div>
-        </div>
-
-        <div class="ct-quiz-step" data-step="2">
-            <h2>¿Cuánto tiempo hace que terminaron?</h2>
-            <p class="ct-step-subtitle">Elegí la opción que mejor describe tu caso.</p>
-            <div class="ct-options-grid">
-                <button class="ct-option-card" onclick="nextStep(2,'Menos de 2 semanas')">Menos de 2 semanas</button>
-                <button class="ct-option-card" onclick="nextStep(2,'Entre 2 semanas y 2 meses')">Entre 2 semanas y 2 meses</button>
-                <button class="ct-option-card" onclick="nextStep(2,'Hace más de 2 meses')">Hace más de 2 meses</button>
-            </div>
-        </div>
-
-        <div class="ct-quiz-step" data-step="3">
-            <h2>¿Cómo te sentís la mayor parte del día?</h2>
-            <p class="ct-step-subtitle">Tu estado emocional es la base para estructurar el plan.</p>
-            <div class="ct-options-grid">
-                <button class="ct-option-card" onclick="nextStep(3,'Con un vacío en el pecho y ansiedad constante')">Con un vacío en el pecho y ansiedad constante</button>
-                <button class="ct-option-card" onclick="nextStep(3,'Confundida, dolida y buscando respuestas')">Confundida, dolida y buscando respuestas</button>
-                <button class="ct-option-card" onclick="nextStep(3,'Intentando seguir adelante pero pensando en él')">Intentando seguir adelante pero pensando en él</button>
-            </div>
-        </div>
-
-        <div class="ct-quiz-step" data-step="4">
-            <h2>¿Cómo está la comunicación con tu ex hoy?</h2>
-            <p class="ct-step-subtitle">Define el canal de contacto para aplicar la estrategia correcta.</p>
-            <div class="ct-options-grid">
-                <button class="ct-option-card" onclick="nextStep(4,'Me bloqueó de todos lados / Contacto Cero absoluto')">Me bloqueó de todos lados / Contacto cero absoluto</button>
-                <button class="ct-option-card" onclick="nextStep(4,'Respuestas frías, cortantes o me deja en visto')">Respuestas frías, cortantes o me deja en visto</button>
-                <button class="ct-option-card" onclick="nextStep(4,'Hablamos de vez en cuando de forma casual')">Hablamos de vez en cuando, de forma casual</button>
-            </div>
-        </div>
-
-        <div class="ct-quiz-step" data-step="5">
-            <h2>¿Cuáles de estos errores cometiste tras la ruptura?</h2>
-            <p class="ct-step-subtitle">Marcá todos los que apliquen (sé honesta con vos misma).</p>
-            <div class="ct-checkbox-list">
-                <label class="ct-checkbox-card">
-                    <input type="checkbox" name="errors" value="textos_eternos">
-                    <span class="ct-checkbox-text">Escribirle mensajes largos de madrugada</span>
-                </label>
-                <label class="ct-checkbox-card">
-                    <input type="checkbox" name="errors" value="rogar">
-                    <span class="ct-checkbox-text">Rogarle, suplicarle o prometerle cambios</span>
-                </label>
-                <label class="ct-checkbox-card">
-                    <input type="checkbox" name="errors" value="stalkear">
-                    <span class="ct-checkbox-text">Revisar obsesivamente su WhatsApp / redes sociales</span>
-                </label>
-                <label class="ct-checkbox-card">
-                    <input type="checkbox" name="errors" value="provocar_celos">
-                    <span class="ct-checkbox-text">Subir historias o fotos para intentar darle celos</span>
-                </label>
-            </div>
-            <button class="ct-cta-btn" style="padding: 16px;" onclick="processStep5()">CONTINUAR</button>
-        </div>
-
-        <div class="ct-quiz-step" data-step="6">
-            <h2>¿Cuánto tiempo duró la relación?</h2>
-            <p class="ct-step-subtitle">La duración influye en la inercia del contacto.</p>
-            <div class="ct-options-grid">
-                <button class="ct-option-card" onclick="nextStep(6,'Menos de 1 año')">Menos de 1 año</button>
-                <button class="ct-option-card" onclick="nextStep(6,'Entre 1 y 3 años')">Entre 1 y 3 años</button>
-                <button class="ct-option-card" onclick="nextStep(6,'Más de 3 años')">Más de 3 años</button>
-            </div>
-        </div>
-
-        <div class="ct-quiz-step" data-step="7">
-            <h2>¿Estás comprometida a seguir este método durante 30 días?</h2>
-            <p class="ct-step-subtitle">Sin romper el contacto cero y sin actuar por desesperación.</p>
-            <div class="ct-options-grid">
-                <button class="ct-option-card" onclick="finishQuiz('Si, 100% comprometida')">Sí, estoy 100% lista para recuperar el control</button>
-                <button class="ct-option-card" onclick="finishQuiz('Tengo dudas, pero quiero cambiar')">Tengo dudas, pero estoy dispuesta a intentarlo</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ================================================================
-         2. LOADING SCREEN
-         ================================================================ -->
-    <div id="ct-loading-wrapper" class="ct-flow-container ct-hidden">
-        <div class="ct-loader-content">
-            <div class="ct-spinner"></div>
-            <h2 id="ct-loading-title">Analizando tus respuestas...</h2>
-            <p id="ct-loading-subtitle">Procesando tu test de reconexión.</p>
-            <div class="ct-loading-steps">
-                <div class="ct-loading-step-item" id="loading-step-1">
-                    <span class="ct-tick">✓</span> Evaluando tu nivel de dependencia emocional...
-                </div>
-                <div class="ct-loading-step-item" id="loading-step-2">
-                    <span class="ct-tick">✓</span> Calculando tu probabilidad de reconexión...
-                </div>
-                <div class="ct-loading-step-item" id="loading-step-3">
-                    <span class="ct-tick">✓</span> Estructurando tu plan personalizado...
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ================================================================
-         3. OFFER PAGE — Estructura MusesAcademy
+         CHECKOUT / OFFER PAGE
          ================================================================ -->
     <div id="ct-offer-wrapper">
 
@@ -158,10 +28,16 @@
         </header>
 
         <!-- TÍTULO PRINCIPAL -->
-        <section class="ct-offer-section ct-hero" style="margin-top: 64px; padding-bottom: 4px;">
+        <section class="ct-offer-section ct-hero" style="margin-top: 64px; padding-bottom: 0;">
             <span class="ct-hero-eyebrow" id="ct-hero-eyebrow">Tu plan personalizado está listo</span>
-            <h1 class="ct-hero-title">Hacé que te extrañe tanto<br><span class="ct-gold-text">que no pueda estar sin vos.</span></h1>
-            <p class="ct-hero-sub">El plan práctico de 30 días para recuperar tu poder, cambiar la dinámica y volver a ocupar su mente sin perseguirlo.</p>
+            <h1 class="ct-hero-title">
+                <span class="ct-hero-line">Hacé que vuelva a extrañarte</span>
+                <span class="ct-hero-line ct-gold-text">sin perseguirlo ni perderte</span>
+            </h1>
+            <p class="ct-hero-sub">
+                <span class="ct-hero-sub-line">El plan de 30 días para recuperar tu poder</span>
+                <span class="ct-hero-sub-line">y cambiar la dinámica sin perseguirlo.</span>
+            </p>
         </section>
 
         <!-- IMAGEN COMPARATIVA AHORA vs META -->
@@ -173,6 +49,7 @@
                 </div>
                 <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/40-49-offer-women-9e28c961-1.webp" alt="Ahora vs Objetivo - Método Reconexión" class="ct-compare-hero-img" id="ct-hero-compare-img" onerror="this.closest('.ct-compare-image-section').style.display='none'">
             </div>
+            <a href="#ct-checkout-slot" class="ct-cta-btn ct-image-cta ct-btn-pulse">QUIERO QUE VUELVA A EXTRAÑARME</a>
         </section>
 
         <!-- STATUS / GOAL MINI CARDS -->
@@ -252,15 +129,19 @@
             <p class="ct-stats-disclaimer">Esto no es una promesa. Es el estado que el plan construye en vos.</p>
         </section>
 
-        <!-- TÍTULO PLAN LISTO -->
-        <section class="ct-offer-section" style="padding: 26px 20px 6px; border-bottom: none;">
-            <h2 class="ct-section-title-center" style="margin-bottom: 0;">Cada día que pasa juega en contra.<br><span class="ct-gold-text">Empezá tu plan hoy.</span></h2>
-            <p class="ct-urgency-note" id="ct-urgency-note" style="display:none;"></p>
-        </section>
-
         <!-- CHECKOUT SLOT (el widget wfacp_form de FunnelKit se mueve acá por JS) -->
         <section class="ct-offer-section ct-checkout-section">
             <h2 class="ct-section-title-center">Elegí tu plan y<br><span class="ct-gold-text">empezá hoy mismo.</span></h2>
+            <div id="ct-contact-heading" aria-live="polite">
+                <button type="button" id="ct-back-to-plan" class="ct-back-to-plan" aria-label="Volver al paso de selección del plan">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M15 18l-6-6 6-6"></path>
+                    </svg>
+                    <span>Volver a elegir plan</span>
+                </button>
+                <h2>Información de contacto</h2>
+                <p>Completá tus datos para recibir el material y finalizar tu compra.</p>
+            </div>
             <div id="ct-checkout-slot"></div>
         </section>
 
@@ -303,50 +184,57 @@
             </div>
         </section>
 
-        <!-- HIGHLIGHTS DEL PLAN (lista de ítems con icono) -->
+        <!-- TODO LO QUE INCLUYE -->
         <section class="ct-offer-section">
-            <h2 class="ct-section-title-center">Lo que incluye tu plan</h2>
+            <h2 class="ct-section-title-center">Todo lo que necesitás para dejar de improvisar</h2>
             <div class="ct-item-list">
                 <div class="ct-item-row">
                     <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/feat_psychology.png" alt="" class="ct-item-icon">
                     <div>
-                        <span class="ct-item-title">Vol. I — Fundamentos del Método Reconexión</span>
-                        <span class="ct-item-sub">El giro contrario, los 8 principios y la base psicológica de la atracción tras una ruptura</span>
+                        <span class="ct-item-title">Volumen I — Fundamentos de Reconexión</span>
+                        <span class="ct-item-sub">Entendé qué estaba alimentando la distancia, cómo funciona el giro contrario y por qué la reconstrucción empieza por vos.</span>
                     </div>
                 </div>
                 <div class="ct-item-row">
                     <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/feat_strategies.png" alt="" class="ct-item-icon">
                     <div>
-                        <span class="ct-item-title">Vol. II — Plan de Acción 30 días</span>
-                        <span class="ct-item-sub">Una misión por día, con estructura clara para cada fase: Reinicio, Reconstrucción, Reatracción y Reencuentro</span>
+                        <span class="ct-item-title">Volumen II — Plan de Acción de 30 días</span>
+                        <span class="ct-item-sub">Una acción concreta por día, organizada en Reinicio, Reconstrucción, Reatracción y Reencuentro.</span>
+                    </div>
+                </div>
+                <div class="ct-item-row">
+                    <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/result_done.png" alt="" class="ct-item-icon">
+                    <div>
+                        <span class="ct-item-title">Tracker editable en Excel</span>
+                        <span class="ct-item-sub">Registrá qué hiciste, cómo te sentiste y qué cambió. Vas a poder medir tu avance sin depender de si él escribió ese día.</span>
                     </div>
                 </div>
                 <div class="ct-item-row">
                     <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/feat_scripts.png" alt="" class="ct-item-icon">
                     <div>
-                        <span class="ct-item-title">Plantillas de mensajes</span>
-                        <span class="ct-item-sub">Qué escribir exactamente en el primer contacto y cómo manejarlo sin quemarte</span>
+                        <span class="ct-item-title">Los tres mensajes de reconexión</span>
+                        <span class="ct-item-sub">Rompé el patrón, reconstruí la conexión y abrí una oportunidad real. Incluye el texto exacto, cuándo enviarlo y qué señal esperar antes de avanzar.</span>
                     </div>
                 </div>
                 <div class="ct-item-row">
                     <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/goal_target.png" alt="" class="ct-item-icon">
                     <div>
                         <span class="ct-item-title">Matriz de respuesta</span>
-                        <span class="ct-item-sub">Qué hacer según cómo reaccione él: frío, cálido, bloqueado o ambiguo</span>
+                        <span class="ct-item-sub">Qué hacer si responde cálido, frío, ambiguo, aparece y desaparece o todavía no existe un canal abierto.</span>
                     </div>
                 </div>
                 <div class="ct-item-row">
                     <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/feat_attraction.png" alt="" class="ct-item-icon">
                     <div>
                         <span class="ct-item-title">Guion del primer reencuentro</span>
-                        <span class="ct-item-sub">Cómo manejarte en el cara a cara sin arruinar lo que construiste</span>
+                        <span class="ct-item-sub">Cómo proponerlo, qué observar y cómo evitar convertir el encuentro en una negociación desesperada.</span>
                     </div>
                 </div>
                 <div class="ct-item-row">
                     <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/feat_support.png" alt="" class="ct-item-icon">
                     <div>
                         <span class="ct-item-title">Chequeo antisabotaje</span>
-                        <span class="ct-item-sub">Las señales de alerta para saber cuándo estás a punto de arruinar lo avanzado</span>
+                        <span class="ct-item-sub">Las señales que tenés que revisar antes de escribir, responder o aceptar un acercamiento.</span>
                     </div>
                 </div>
             </div>
@@ -356,28 +244,28 @@
         <section class="ct-offer-section" style="background-color: var(--ct-bg-cream);">
             <div class="ct-science-head">
                 <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/trust_handshake.png" alt="" class="ct-science-icon">
-                <h2 class="ct-section-title-center" style="margin-bottom:6px;">No es consejo de gurú.<br><span class="ct-gold-text">Es evidencia.</span></h2>
+                <h2 class="ct-section-title-center" style="margin-bottom:6px;">No te damos trucos.<br><span class="ct-gold-text">Te damos un criterio.</span></h2>
             </div>
-            <p class="ct-science-intro">Cada principio del método se apoya en investigación real sobre apego, ruptura y recuperación. No prometemos obligarlo a volver: te damos la base que sí cambia la dinámica.</p>
+            <p class="ct-science-intro">El método combina herramientas prácticas con investigaciones sobre identidad después de una ruptura, exposición digital, contacto impulsivo, regulación emocional y actividad física.</p>
             <div class="ct-science-grid">
                 <div class="ct-science-item">
                     <span class="ct-science-title">Recuperar tu identidad</span>
-                    <span class="ct-science-sub">Reconstruir tu autoconcepto tras la ruptura predice mejor bienestar. El plan mide 5 áreas de tu vida, no si él escribe.</span>
+                    <span class="ct-science-sub">Reconstruir tu autoconcepto después de una separación mejora tu bienestar. Por eso el plan mide cómo volvés a ocupar tu vida, no solamente si él escribe.</span>
                     <span class="ct-science-src">Mason et al. (2012)</span>
                 </div>
                 <div class="ct-science-item">
-                    <span class="ct-science-title">Dejar de vigilar</span>
-                    <span class="ct-science-sub">Revisar el perfil de tu ex se asocia con más angustia y menos crecimiento. Por eso silenciás y archivás.</span>
+                    <span class="ct-science-title">Dejar de vigilarlo</span>
+                    <span class="ct-science-sub">Revisar constantemente sus redes alimenta la angustia y dificulta el crecimiento. Por eso aprendés a reducir estímulos sin utilizar el silencio como castigo.</span>
                     <span class="ct-science-src">Marshall (2012)</span>
                 </div>
                 <div class="ct-science-item">
                     <span class="ct-science-title">Contacto con criterio</span>
-                    <span class="ct-science-sub">En recién separados, más contacto impulsivo predijo más malestar. No convertís ansiedad en mensajes.</span>
+                    <span class="ct-science-sub">Más contacto no siempre produce más conexión. Aprendés a distinguir una conversación útil de un mensaje enviado para calmar ansiedad.</span>
                     <span class="ct-science-src">Sbarra &amp; Emery</span>
                 </div>
                 <div class="ct-science-item">
-                    <span class="ct-science-title">Mover el cuerpo</span>
-                    <span class="ct-science-sub">La actividad física regular reduce síntomas de ansiedad y depresión. Agendás 3 sesiones sostenibles.</span>
+                    <span class="ct-science-title">Cuidar tu cuerpo</span>
+                    <span class="ct-science-sub">Movimiento, descanso y rutinas sostenibles te dan una base más estable para atravesar el proceso y tomar mejores decisiones.</span>
                     <span class="ct-science-src">OMS</span>
                 </div>
             </div>
@@ -390,29 +278,43 @@
                 <div class="ct-item-row">
                     <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/result_done.png" alt="" class="ct-item-icon">
                     <div>
-                        <span class="ct-item-title">Sabés exactamente qué hacer en cada momento</span>
-                        <span class="ct-item-sub">Sin improvisar mensajes, sin movidas que lo alejan más</span>
+                        <span class="ct-item-title">Sabés qué acción corresponde en cada etapa.</span>
                     </div>
                 </div>
                 <div class="ct-item-row">
                     <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/result_done.png" alt="" class="ct-item-icon">
                     <div>
-                        <span class="ct-item-title">Frenás los errores que estaban arruinando todo</span>
-                        <span class="ct-item-sub">El giro contrario te saca del modo súplica antes de que sea tarde</span>
+                        <span class="ct-item-title">Dejás de enviar mensajes que después lamentás.</span>
                     </div>
                 </div>
                 <div class="ct-item-row">
                     <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/result_done.png" alt="" class="ct-item-icon">
                     <div>
-                        <span class="ct-item-title">Él te escribe primero — sin que ruegues</span>
-                        <span class="ct-item-sub">La atracción se reconstruye desde la distancia, no desde la súplica</span>
+                        <span class="ct-item-title">Recuperás sueño, concentración y dirección.</span>
                     </div>
                 </div>
                 <div class="ct-item-row">
                     <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/result_done.png" alt="" class="ct-item-icon">
                     <div>
-                        <span class="ct-item-title">Manejás el reencuentro con calma y criterio</span>
-                        <span class="ct-item-sub">Tenés el guion, la estructura y el chequeo antisabotaje para ese momento</span>
+                        <span class="ct-item-title">Creás espacio para que pueda notar tu ausencia.</span>
+                    </div>
+                </div>
+                <div class="ct-item-row">
+                    <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/result_done.png" alt="" class="ct-item-icon">
+                    <div>
+                        <span class="ct-item-title">Si vuelve a escribir, sabés cómo responder.</span>
+                    </div>
+                </div>
+                <div class="ct-item-row">
+                    <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/result_done.png" alt="" class="ct-item-icon">
+                    <div>
+                        <span class="ct-item-title">Observás sus acciones y decidís si existe reciprocidad.</span>
+                    </div>
+                </div>
+                <div class="ct-item-row">
+                    <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/result_done.png" alt="" class="ct-item-icon">
+                    <div>
+                        <span class="ct-item-title">Dejás de sentir que toda la decisión está en sus manos.</span>
                     </div>
                 </div>
             </div>
@@ -420,7 +322,7 @@
 
         <!-- ANTES Y DESPUÉS (estilo MusesAcademy) -->
         <section class="ct-offer-section">
-            <h2 class="ct-section-title-center">Antes vs. después del Método</h2>
+            <h2 class="ct-section-title-center">La misma ruptura. Una manera completamente distinta de atravesarla</h2>
             <div class="ct-ba-v2">
                 <!-- Card ANTES (atrás, izquierda) -->
                 <div class="ct-ba-v2__before">
@@ -428,57 +330,49 @@
                     <div class="ct-ba-list">
                         <div class="ct-ba-item">
                             <svg fill="none" viewBox="0 0 22 22" class="ct-ba-icon"><path fill="#DBDBDB" d="M11 21c5.523 0 10-4.477 10-10S16.523 1 11 1 1 5.477 1 11s4.477 10 10 10"></path><path stroke="#8a8a8a" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m7 7 4 4m0 0 4 4m-4-4 4-4m-4 4-4 4"></path></svg>
-                            <span>Vivís pendiente del teléfono</span>
+                            <span>Revisás el teléfono constantemente.</span>
                         </div>
                         <div class="ct-ba-item">
                             <svg fill="none" viewBox="0 0 22 22" class="ct-ba-icon"><path fill="#DBDBDB" d="M11 21c5.523 0 10-4.477 10-10S16.523 1 11 1 1 5.477 1 11s4.477 10 10 10"></path><path stroke="#8a8a8a" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m7 7 4 4m0 0 4 4m-4-4 4-4m-4 4-4 4"></path></svg>
-                            <span>No dormís, no te concentrás</span>
+                            <span>Cada silencio cambia tu estado de ánimo.</span>
                         </div>
                         <div class="ct-ba-item">
                             <svg fill="none" viewBox="0 0 22 22" class="ct-ba-icon"><path fill="#DBDBDB" d="M11 21c5.523 0 10-4.477 10-10S16.523 1 11 1 1 5.477 1 11s4.477 10 10 10"></path><path stroke="#8a8a8a" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m7 7 4 4m0 0 4 4m-4-4 4-4m-4 4-4 4"></path></svg>
-                            <span>Cada reacción suya te hunde</span>
+                            <span>Escribís para conseguir alivio inmediato.</span>
                         </div>
                         <div class="ct-ba-item">
                             <svg fill="none" viewBox="0 0 22 22" class="ct-ba-icon"><path fill="#DBDBDB" d="M11 21c5.523 0 10-4.477 10-10S16.523 1 11 1 1 5.477 1 11s4.477 10 10 10"></path><path stroke="#8a8a8a" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m7 7 4 4m0 0 4 4m-4-4 4-4m-4 4-4 4"></path></svg>
-                            <span>Actuás desesperada sin darte cuenta</span>
+                            <span>Confundís una respuesta con una reconciliación.</span>
                         </div>
                         <div class="ct-ba-item">
                             <svg fill="none" viewBox="0 0 22 22" class="ct-ba-icon"><path fill="#DBDBDB" d="M11 21c5.523 0 10-4.477 10-10S16.523 1 11 1 1 5.477 1 11s4.477 10 10 10"></path><path stroke="#8a8a8a" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m7 7 4 4m0 0 4 4m-4-4 4-4m-4 4-4 4"></path></svg>
-                            <span>Agotada y vacía</span>
+                            <span>Sentís que toda la decisión está en sus manos.</span>
                         </div>
                     </div>
                 </div>
                 <!-- Card DESPUÉS (encima, derecha con verde) -->
                 <div class="ct-ba-v2__after">
-                    <h4 class="ct-ba-v2__title ct-ba-v2__title--after">Con el método</h4>
+                    <h4 class="ct-ba-v2__title ct-ba-v2__title--after">Con Reconexión 30</h4>
                     <div class="ct-ba-list">
                         <div class="ct-ba-item">
                             <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/result_done.png" alt="" class="ct-ba-icon">
-                            <span>Dormís, trabajás, te movés con propósito</span>
+                            <span>Tenés una acción clara para cada día.</span>
                         </div>
                         <div class="ct-ba-item">
                             <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/result_done.png" alt="" class="ct-ba-icon">
-                            <span>Control total sobre tus reacciones</span>
+                            <span>Recuperás el control sobre tus respuestas.</span>
                         </div>
                         <div class="ct-ba-item">
                             <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/result_done.png" alt="" class="ct-ba-icon">
-                            <span>Él empieza a buscarte</span>
+                            <span>Dejás de alimentar la persecución.</span>
                         </div>
                         <div class="ct-ba-item">
                             <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/result_done.png" alt="" class="ct-ba-icon">
-                            <span>Sabés qué responder y cuándo callar</span>
+                            <span>Si él aparece, evaluás hechos y no fantasías.</span>
                         </div>
                         <div class="ct-ba-item">
                             <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/result_done.png" alt="" class="ct-ba-icon">
-                            <span>Manejás el reencuentro en control</span>
-                        </div>
-                        <div class="ct-ba-item">
-                            <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/result_done.png" alt="" class="ct-ba-icon">
-                            <span>Con energía, claridad y propósito</span>
-                        </div>
-                        <div class="ct-ba-item">
-                            <img src="https://creatuversion.com.ar/wp-content/uploads/2026/07/result_done.png" alt="" class="ct-ba-icon">
-                            <span>Vos decidís si él vuelve o no</span>
+                            <span>También sos vos quien decide si vale la pena volver.</span>
                         </div>
                     </div>
                 </div>
@@ -491,38 +385,52 @@
             <div class="ct-faq-b">
                 <div class="ct-faq-b__item">
                     <div class="ct-faq-b__q" onclick="toggleFaq(this)">
-                        <span>¿Funciona si él me tiene bloqueada?</span>
+                        <span>¿Sirve si me tiene bloqueada?</span>
                         <svg class="ct-faq-b__arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 3L7 9L13 3" stroke="#343434" stroke-width="2" stroke-linecap="round"></path></svg>
                     </div>
-                    <div class="ct-faq-b__a">Sí. El Vol. I tiene un protocolo específico para contacto cero y bloqueo. La Matriz de respuesta cubre ese escenario: qué hacer cuando no hay un canal abierto todavía.</div>
+                    <div class="ct-faq-b__a">El método no enseña a evadir un bloqueo ni a contactarlo por otras vías. Te muestra cómo atravesar esta etapa sin insistir, qué reconstruir mientras no existe un canal abierto y qué señales deberían aparecer antes de considerar un nuevo contacto.</div>
+                </div>
+                <div class="ct-faq-b__item">
+                    <div class="ct-faq-b__q" onclick="toggleFaq(this)">
+                        <span>¿Tengo que enviar los tres mensajes?</span>
+                        <svg class="ct-faq-b__arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 3L7 9L13 3" stroke="#343434" stroke-width="2" stroke-linecap="round"></path></svg>
+                    </div>
+                    <div class="ct-faq-b__a">No. Cada mensaje corresponde a una etapa y solo se utiliza si existen señales suficientes para avanzar. Si él pide distancia, no responde o mantiene una actitud ambigua, el método también te indica cuándo detenerte.</div>
+                </div>
+                <div class="ct-faq-b__item">
+                    <div class="ct-faq-b__q" onclick="toggleFaq(this)">
+                        <span>¿Qué pasa si escribe antes de terminar los treinta días?</span>
+                        <svg class="ct-faq-b__arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 3L7 9L13 3" stroke="#343434" stroke-width="2" stroke-linecap="round"></path></svg>
+                    </div>
+                    <div class="ct-faq-b__a">No abandonás el proceso ni fingís indiferencia. Usás la matriz de respuesta para contestar de manera proporcional y observar si existe continuidad real.</div>
                 </div>
                 <div class="ct-faq-b__item">
                     <div class="ct-faq-b__q" onclick="toggleFaq(this)">
                         <span>¿Qué diferencia a este método de otros consejos?</span>
                         <svg class="ct-faq-b__arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 3L7 9L13 3" stroke="#343434" stroke-width="2" stroke-linecap="round"></path></svg>
                     </div>
-                    <div class="ct-faq-b__a">No es "conseguite otro" ni "ponete linda para que vuelva". Es un sistema estructurado de 30 días con misiones concretas, plantillas y guion del primer reencuentro — y cada principio está respaldado por estudios reales sobre apego y ruptura. Nada genérico.</div>
+                    <div class="ct-faq-b__a">No vas a recibir frases aisladas como “ignoralo” o “dale celos”. Vas a seguir una secuencia de treinta días con fundamentos, acciones concretas, tracker, mensajes condicionales y criterios para decidir cuándo avanzar.</div>
                 </div>
                 <div class="ct-faq-b__item">
                     <div class="ct-faq-b__q" onclick="toggleFaq(this)">
-                        <span>¿Cómo sé si voy bien o me estoy saboteando?</span>
+                        <span>¿Cuándo recibo el material?</span>
                         <svg class="ct-faq-b__arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 3L7 9L13 3" stroke="#343434" stroke-width="2" stroke-linecap="round"></path></svg>
                     </div>
-                    <div class="ct-faq-b__a">El plan incluye el Chequeo antisabotaje: un listado de señales de alerta para identificar si estás a punto de arruinar lo que construiste. Lo revisás antes de cada acción clave.</div>
+                    <div class="ct-faq-b__a">Inmediatamente después de completar el pago. Vas a recibir todos los materiales incluidos en el plan elegido.</div>
                 </div>
                 <div class="ct-faq-b__item">
                     <div class="ct-faq-b__q" onclick="toggleFaq(this)">
-                        <span>¿Cuándo accedo al material?</span>
+                        <span>¿Es una suscripción?</span>
                         <svg class="ct-faq-b__arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 3L7 9L13 3" stroke="#343434" stroke-width="2" stroke-linecap="round"></path></svg>
                     </div>
-                    <div class="ct-faq-b__a">Al instante. En cuanto completás el pago recibís los dos volúmenes en PDF + todas las herramientas. Sin espera, sin videos que esperar. Lo tenés ya.</div>
+                    <div class="ct-faq-b__a">No. Es un pago único y no se realizan renovaciones automáticas.</div>
                 </div>
                 <div class="ct-faq-b__item">
                     <div class="ct-faq-b__q" onclick="toggleFaq(this)">
-                        <span>¿Y si no me funciona?</span>
+                        <span>¿Y si el método no es para mí?</span>
                         <svg class="ct-faq-b__arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 3L7 9L13 3" stroke="#343434" stroke-width="2" stroke-linecap="round"></path></svg>
                     </div>
-                    <div class="ct-faq-b__a">Tenés 7 días de garantía. Si al ver el método sentís que no es para vos o que no te da un plan claro para recuperar el control y cambiar la dinámica, escribís y te devolvemos todo. Sin vueltas.</div>
+                    <div class="ct-faq-b__a">Tenés siete días para revisar el contenido. Si no encontrás un plan claro y aplicable, podés solicitar la devolución siguiendo las condiciones de la garantía.</div>
                 </div>
             </div>
         </section>
@@ -632,28 +540,6 @@
 <script>
 var quizData = { step1:'', step2:'', step3:'', step4:'', step5:[], step6:'', step7:'' };
 
-function nextStep(current, val) {
-    quizData['step' + current] = val;
-    document.querySelector('.ct-quiz-step[data-step="'+current+'"]').classList.remove('ct-quiz-step--active');
-    var next = current + 1;
-    document.querySelector('.ct-quiz-step[data-step="'+next+'"]').classList.add('ct-quiz-step--active');
-    updateProgress(next);
-}
-
-function updateProgress(step) {
-    document.getElementById('ct-step-indicator').textContent = 'Paso ' + step + ' de 7';
-    document.getElementById('ct-progress-fill').style.width = ((step/7)*100) + '%';
-}
-
-function processStep5() {
-    var checks = document.querySelectorAll('input[name="errors"]:checked');
-    if (checks.length === 0) { alert('Seleccioná al menos una opción.'); return; }
-    quizData.step5 = Array.from(checks).map(function(c){ return c.value; });
-    document.querySelector('.ct-quiz-step[data-step="5"]').classList.remove('ct-quiz-step--active');
-    document.querySelector('.ct-quiz-step[data-step="6"]').classList.add('ct-quiz-step--active');
-    updateProgress(6);
-}
-
 function ctRevealOffer() {
     var statusVal = "Ruptura de meses";
     if (quizData.step2 === 'Menos de 2 semanas') statusVal = "Ruptura reciente";
@@ -711,27 +597,13 @@ function ctRevealOffer() {
     };
     var ghEl = document.getElementById('ct-goal-headline'); if (ghEl && goalHead[quizData.step4]) { ghEl.textContent = goalHead[quizData.step4]; ghEl.style.display = 'block'; }
 
-    var qw = document.getElementById('ct-quiz-wrapper'); if (qw) qw.classList.add('ct-hidden');
-    var lw = document.getElementById('ct-loading-wrapper'); if (lw) lw.classList.add('ct-hidden');
     document.getElementById('ct-offer-wrapper').classList.remove('ct-hidden');
     window.scrollTo(0, 0);
     startCountdown();
     try { if (window.jQuery) jQuery(document.body).trigger('update_checkout'); } catch(e){}
 }
 
-function finishQuiz(val) {
-    quizData.step7 = val;
-    try { localStorage.setItem('ct_quizdata', JSON.stringify(quizData)); } catch(e){}
-    document.getElementById('ct-quiz-wrapper').classList.add('ct-hidden');
-    var loader = document.getElementById('ct-loading-wrapper');
-    loader.classList.remove('ct-hidden');
-    setTimeout(function(){ document.getElementById('loading-step-1').classList.add('ct-step-done'); }, 1200);
-    setTimeout(function(){ document.getElementById('loading-step-2').classList.add('ct-step-done'); document.getElementById('ct-loading-title').textContent = 'Calculando compatibilidad...'; }, 2400);
-    setTimeout(function(){ document.getElementById('loading-step-3').classList.add('ct-step-done'); document.getElementById('ct-loading-title').textContent = 'Estructurando tu plan...'; }, 3600);
-    setTimeout(function(){ loader.classList.add('ct-hidden'); ctRevealOffer(); }, 4800);
-}
-
-// Sin quiz acá: mostrar la oferta directo (con personalización del home si vino de ahí)
+// Mostrar el checkout directamente y reutilizar la personalización guardada en la página principal.
 document.addEventListener('DOMContentLoaded', function(){
     try {
         var saved = localStorage.getItem('ct_quizdata');
@@ -759,6 +631,9 @@ function startCountdown() {
         if (el1) el1.textContent = str;
         if (el2) el2.textContent = str;
         if (el3) el3.textContent = str;
+        document.querySelectorAll('.ct-checkout-countdown-timer').forEach(function(el){
+            el.textContent = str;
+        });
         secs = secs <= 0 ? duration : secs - 1;
         localStorage.setItem(key, secs);
     }
@@ -793,13 +668,57 @@ function toggleFaq(el) {
 }
 
 // ---- Checkout FunnelKit: mover al slot + foco al pagar + badge (liviano) ----
+var ctScrollJobs = [];
+function ctScrollToContact(){
+    ctScrollJobs.forEach(function(job){ clearTimeout(job); });
+    ctScrollJobs = [0, 80, 260, 650].map(function(delay){
+        return setTimeout(function(){
+            try {
+                window.scrollTo({top:0, left:0, behavior:'auto'});
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
+            } catch(e) {
+                window.scrollTo(0, 0);
+            }
+        }, delay);
+    });
+}
 function ctSyncFocus(){
     var t2 = document.querySelector('.wfacp-tab2');
     var on = !!(t2 && t2.classList.contains('wfacp-active'));
     if (document.body.classList.contains('ct-focus-checkout') !== on){
         document.body.classList.toggle('ct-focus-checkout', on);
-        if (on) { try { window.scrollTo({top:0, behavior:'smooth'}); } catch(e){ window.scrollTo(0,0); } }
     }
+    if (on) ctScrollToContact();
+}
+function ctBackToPlan(){
+    var nativeBack = document.querySelector('#ct-checkout-slot .wfacp_back_page_button');
+    var firstStep = document.querySelector('#ct-checkout-slot .wfacp-tab1');
+
+    if (nativeBack) nativeBack.click();
+    else if (firstStep) firstStep.click();
+
+    [80, 260, 600].forEach(function(delay){
+        setTimeout(function(){
+            ctSyncFocus();
+            if (document.body.classList.contains('ct-focus-checkout')) return;
+            var slot = document.getElementById('ct-checkout-slot');
+            if (!slot) return;
+            try { slot.scrollIntoView({behavior:'smooth', block:'start'}); }
+            catch(e) { window.location.hash = 'ct-checkout-slot'; }
+        }, delay);
+    });
+}
+function ctEnsureCheckoutUrgency(){
+    document.querySelectorAll('#ct-checkout-slot .wfacp_next_page_button').forEach(function(button){
+        var next = button.nextElementSibling;
+        if (next && next.classList.contains('ct-checkout-urgency')) return;
+        var note = document.createElement('div');
+        note.className = 'ct-checkout-urgency';
+        note.setAttribute('aria-live', 'polite');
+        note.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg><span>Tu descuento queda reservado por <strong class="ct-checkout-countdown-timer">09:40</strong></span>';
+        button.insertAdjacentElement('afterend', note);
+    });
 }
 var ctWired = false;
 function ctWireCheckout(){
@@ -813,11 +732,32 @@ function ctWireCheckout(){
     var steps = document.querySelector('.wfacp_form_steps') || slot;
     try { new MutationObserver(ctSyncFocus).observe(steps, {attributes:true, subtree:true, attributeFilter:['class']}); } catch(e){}
     ctSyncFocus();
+    ctEnsureCheckoutUrgency();
+    setTimeout(ctEnsureCheckoutUrgency, 300);
+    setTimeout(ctEnsureCheckoutUrgency, 900);
 }
 document.addEventListener('DOMContentLoaded', function(){
     ctWireCheckout();
     if (ctWired) return;
     var t=0, iv=setInterval(function(){ t++; ctWireCheckout(); if (ctWired || t>150) clearInterval(iv); }, 300);
+});
+
+// FunnelKit puede volver a desplazar la vista mientras monta el segundo paso.
+// Repetimos el ajuste después de tocar "Siguiente" para que el formulario empiece arriba.
+document.addEventListener('click', function(e){
+    var nextButton = e.target.closest('.wfacp_next_page_button');
+    if (!nextButton) return;
+    setTimeout(ctSyncFocus, 20);
+    setTimeout(ctSyncFocus, 180);
+    setTimeout(ctSyncFocus, 520);
+}, true);
+
+// Regreso seguro al selector: usa el control nativo de FunnelKit para conservar el estado.
+document.addEventListener('click', function(e){
+    var backButton = e.target.closest('#ct-back-to-plan');
+    if (!backButton) return;
+    e.preventDefault();
+    ctBackToPlan();
 });
 
 // Click en cualquier parte de la fila del plan -> selecciona (no solo el circulito)
@@ -830,6 +770,7 @@ document.addEventListener('click', function(e){
     e.stopPropagation();
     if (window.jQuery) { window.jQuery(radio).prop('checked', true).trigger('change'); }
     else { radio.checked = true; radio.dispatchEvent(new Event('change', {bubbles:true})); }
+    setTimeout(ctEnsureCheckoutUrgency, 250);
 }, true);
 </script>
 
@@ -873,102 +814,6 @@ body {
 
 .ct-hidden { display: none !important; }
 
-/* ---- QUIZ ---- */
-.ct-flow-container {
-    padding: 40px 24px;
-    display: flex;
-    flex-direction: column;
-    min-height: 100svh;
-    min-height: 100vh;
-}
-
-.ct-quiz-progress-bar {
-    width: 100%; height: 6px;
-    background: #f1f1f1; border-radius: 3px;
-    overflow: hidden; margin-bottom: 15px;
-}
-
-.ct-progress-fill {
-    height: 100%;
-    background: var(--ct-gold);
-    transition: width 0.3s ease;
-}
-
-.ct-quiz-steps-header {
-    font-size: 12px; font-weight: 600;
-    color: var(--ct-text-light); margin-bottom: 25px;
-}
-
-.ct-quiz-step { display: none; animation: fadeIn 0.4s ease forwards; }
-.ct-quiz-step--active { display: block; }
-.ct-quiz-step h2 { font-size: 21px; font-weight: 600; line-height: 1.25; margin-bottom: 10px; }
-
-.ct-step-subtitle { font-size: 13px; color: var(--ct-text-light); margin-bottom: 30px; }
-
-.ct-options-grid { display: flex; flex-direction: column; gap: 12px; }
-
-.ct-age-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.ct-age-card {
-    background: #fff; border: 1.5px solid #eaeaea; border-radius: 12px;
-    padding: 8px; cursor: pointer; font-family: inherit;
-    display: flex; flex-direction: column; gap: 8px; align-items: center;
-    transition: border-color 0.2s, box-shadow 0.2s;
-}
-.ct-age-card:hover { border-color: var(--ct-gold); box-shadow: 0 4px 14px rgba(155,124,80,0.12); }
-.ct-age-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 8px; display: block; }
-.ct-age-card span { font-size: 15px; font-weight: 600; color: var(--ct-text-dark); padding-bottom: 4px; }
-
-.ct-option-card {
-    width: 100%; background: #fff;
-    border: 1.5px solid #eaeaea; border-radius: 10px;
-    padding: 18px; font-family: inherit;
-    font-size: 14.5px; font-weight: 500;
-    color: var(--ct-text-dark); text-align: left;
-    cursor: pointer; transition: all 0.2s ease;
-}
-.ct-option-card:hover { border-color: var(--ct-gold); }
-
-.ct-checkbox-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
-
-.ct-checkbox-card {
-    display: flex; align-items: center; gap: 12px;
-    border: 1.5px solid #eaeaea; border-radius: 10px;
-    padding: 16px; cursor: pointer; transition: border-color 0.2s;
-}
-.ct-checkbox-card input { width: 18px; height: 18px; accent-color: var(--ct-gold); }
-.ct-checkbox-card:hover { border-color: var(--ct-gold); }
-.ct-checkbox-text { font-size: 13.5px; font-weight: 500; }
-
-/* ---- LOADER ---- */
-.ct-loader-content {
-    display: flex; flex-direction: column;
-    align-items: center; text-align: center; margin-top: 60px;
-}
-.ct-spinner {
-    width: 50px; height: 50px;
-    border: 3.5px solid #f1f1f1;
-    border-top: 3.5px solid var(--ct-gold);
-    border-radius: 50%;
-    animation: spin 0.9s linear infinite;
-    margin-bottom: 25px;
-}
-#ct-loading-title { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
-#ct-loading-subtitle { font-size: 13px; color: var(--ct-text-light); margin-bottom: 40px; }
-.ct-loading-steps { display: flex; flex-direction: column; gap: 15px; text-align: left; max-width: 320px; }
-.ct-loading-step-item {
-    font-size: 13.5px; color: var(--ct-text-light);
-    display: flex; align-items: center; gap: 10px;
-    opacity: 0.5; transition: opacity 0.3s ease;
-}
-.ct-tick {
-    display: inline-flex; width: 20px; height: 20px;
-    background: #eaeaea; color: #fff; border-radius: 50%;
-    align-items: center; justify-content: center;
-    font-size: 11px; font-weight: 700;
-}
-.ct-step-done { opacity: 1; color: var(--ct-text-dark); }
-.ct-step-done .ct-tick { background: var(--ct-green); }
-
 /* ---- OFFER GENERAL ---- */
 .ct-offer-section { padding: 30px 20px; border-bottom: 1px solid rgba(0,0,0,0.04); }
 
@@ -989,13 +834,15 @@ body {
     padding: 5px 12px; border-radius: 20px; margin-bottom: 14px;
 }
 .ct-hero-title {
-    font-size: 26px; font-weight: 800; line-height: 1.22;
-    letter-spacing: -0.5px; margin-bottom: 12px;
+    font-size: clamp(18.5px, 5.6vw, 26px); font-weight: 800; line-height: 1.22;
+    letter-spacing: -0.5px; margin-bottom: 8px;
 }
+.ct-hero-line { display:block; white-space:nowrap; }
 .ct-hero-sub {
-    font-size: 13.5px; color: var(--ct-text-light);
-    line-height: 1.55; max-width: 360px; margin: 0 auto;
+    font-size: clamp(10.8px, 3.25vw, 12.5px); color: var(--ct-text-light);
+    line-height: 1.55; max-width: 360px; margin: 0 auto 8px;
 }
+.ct-hero-sub-line { display:block; white-space:nowrap; }
 
 /* ---- STICKY HEADER ---- */
 .ct-sticky-header {
@@ -1018,6 +865,7 @@ body {
 .ct-compare-image-section { padding: 0 20px 20px; }
 .ct-compare-image-wrapper { position: relative; border-radius: 14px; overflow: hidden; box-shadow: 0 6px 24px rgba(0,0,0,0.12); }
 .ct-compare-hero-img { width: 100%; height: auto; display: block; }
+.ct-image-cta { max-width:420px; margin:16px auto 0; }
 .ct-compare-tabs-overlay {
     position: absolute; top: 12px; left: 0; right: 0;
     display: flex; justify-content: space-between; gap: 12px;
@@ -1244,6 +1092,34 @@ body {
     box-shadow: 0 4px 15px rgba(155,124,80,0.3);
 }
 .ct-cta-btn:hover { background: var(--ct-gold-light); }
+.ct-checkout-urgency {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    margin:11px auto 0;
+    color:var(--ct-text-light);
+    font-size:12px;
+    font-weight:500;
+    line-height:1.4;
+    text-align:center;
+}
+.ct-checkout-urgency svg {
+    width:15px;
+    height:15px;
+    flex:0 0 15px;
+    fill:none;
+    stroke:var(--ct-gold);
+    stroke-width:2;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+}
+.ct-checkout-urgency strong {
+    color:var(--ct-gold);
+    font-size:12.5px;
+    font-weight:800;
+    font-variant-numeric:tabular-nums;
+}
 
 /* ---- FOOTER ---- */
 .ct-app-footer { padding: 24px 16px 40px; text-align: center; }
@@ -1252,8 +1128,6 @@ body {
 .ct-app-copy { font-size: 10.5px; color: var(--ct-text-light); }
 
 /* ---- ANIMACIONES ---- */
-@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes ctPulse {
     0% { box-shadow: 0 0 0 0 rgba(155,124,80,0.7); }
     70% { box-shadow: 0 0 0 12px rgba(155,124,80,0); }
@@ -1262,24 +1136,263 @@ body {
 .ct-btn-pulse { animation: ctPulse 2s infinite; }
 
 @media (hover: hover) {
-    .ct-option-card:hover { border-color: var(--ct-gold); background: rgba(155,124,80,0.02); }
-    .ct-checkbox-card:hover { border-color: var(--ct-gold); }
     .ct-cta-btn:hover { background: var(--ct-gold-light); }
 }
 
 /* ---- CHECKOUT FUNNELKIT EMBEBIDO ---- */
 .ct-checkout-section { padding-bottom: 8px; }
 #ct-checkout-slot { margin-top: 4px; }
+#ct-checkout-slot { scroll-margin-top:76px; }
 #ct-checkout-slot .elementor-section, #ct-checkout-slot .e-con, #ct-checkout-slot .elementor-widget-wfacp_form { padding-left:0!important; padding-right:0!important; background:transparent!important; }
 .wfacp-template-container, .wfacp-form, .wfacp_main_form, .wfacp_form_steps { font-family:'Poppins',sans-serif!important; }
 .wfacp_product_row { border:1.5px solid #eaeaea!important; border-radius:12px!important; margin-bottom:12px!important; padding:12px 14px!important; background:#fff!important; transition:border-color .2s, box-shadow .2s; }
 .wfacp_product_row:hover { border-color:var(--ct-gold)!important; }
 .wfacp_product_row:has(.wfacp_switcher_checkbox:checked) { border-color:var(--ct-gold)!important; background:rgba(155,124,80,.04)!important; box-shadow:0 4px 16px rgba(155,124,80,.15)!important; }
-.wfacp_switcher_checkbox { accent-color:var(--ct-gold)!important; }
+
+/* Radio de producto: anula completamente el punto azul nativo de FunnelKit. */
+body #wfacp-e-form .wfacp_main_form.woocommerce #product_switching_field input[type="radio"].wfacp_switcher_checkbox {
+    -webkit-appearance:none!important;
+    appearance:none!important;
+    position:absolute!important;
+    inset:auto!important;
+    top:50%!important;
+    left:-5px!important;
+    transform:translateY(-50%)!important;
+    display:inline-block!important;
+    width:20px!important;
+    height:20px!important;
+    min-width:20px!important;
+    min-height:20px!important;
+    max-width:20px!important;
+    margin:0!important;
+    padding:0!important;
+    border:2px solid #D8CBB8!important;
+    border-radius:50%!important;
+    background:#fff!important;
+    box-shadow:none!important;
+    opacity:1!important;
+    visibility:visible!important;
+    vertical-align:top!important;
+    cursor:pointer!important;
+    z-index:2!important;
+    transition:border-color .18s ease, box-shadow .18s ease!important;
+}
+body #wfacp-e-form .wfacp_main_form.woocommerce #product_switching_field input[type="radio"].wfacp_switcher_checkbox:not(:checked)::before {
+    content:none!important;
+    display:none!important;
+}
+body #wfacp-e-form .wfacp_main_form.woocommerce #product_switching_field input[type="radio"].wfacp_switcher_checkbox:checked {
+    border-color:var(--ct-gold)!important;
+    background:#fff!important;
+    box-shadow:0 0 0 3px rgba(155,124,80,.14)!important;
+}
+body #wfacp-e-form .wfacp_main_form.woocommerce #product_switching_field input[type="radio"].wfacp_switcher_checkbox:checked::before {
+    content:""!important;
+    display:block!important;
+    float:none!important;
+    width:10px!important;
+    height:10px!important;
+    margin:3px!important;
+    padding:0!important;
+    border:0!important;
+    border-radius:50%!important;
+    background:var(--ct-gold)!important;
+    box-shadow:none!important;
+}
+/* FunnelKit crea un cuadrado gris ::after mientras actualiza el plan. */
+body #wfacp-e-form #product_switching_field.wfacp_animation_start input[type="radio"].wfacp_switcher_checkbox::after,
+body #wfacp-e-form #product_switching_field input[type="radio"].wfacp_switcher_checkbox::after {
+    content:none!important;
+    display:none!important;
+    width:0!important;
+    height:0!important;
+    border:0!important;
+    background:none!important;
+    box-shadow:none!important;
+    animation:none!important;
+}
+#ct-checkout-slot .wfacp_ps_title_wrap {
+    position:relative!important;
+}
+#ct-checkout-slot .wfacp_product_switcher_col_1 {
+    display:block!important;
+    position:static!important;
+    width:0!important;
+    min-width:0!important;
+    flex:0 0 0!important;
+}
+
+/* Más espacio para nombre y descripción; precio más compacto a la derecha. */
+body #wfacp-e-form #product_switching_field .wfacp_ps_title_wrap {
+    width:70%!important;
+    max-width:70%!important;
+    flex:0 0 70%!important;
+}
+body #wfacp-e-form #product_switching_field .wfacp_product_sec_start {
+    width:30%!important;
+    max-width:30%!important;
+    flex:0 0 30%!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-end!important;
+    align-self:stretch!important;
+}
+body #wfacp-e-form #product_switching_field .wfacp_row_wrap {
+    align-items:stretch!important;
+}
+body #wfacp-e-form #product_switching_field .wfacp_product_price_container,
+body #wfacp-e-form #product_switching_field .wfacp_product_price_sec {
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:flex-end!important;
+    justify-content:center!important;
+}
+
+/* El encabezado exterior ya explica que hay que elegir un plan. */
+#ct-checkout-slot .fkcf-section-seleccione-su-plan-0 > .wfacp_internal_form_wrap.wfacp-comm-title,
+#ct-checkout-slot #product_switching_field > .wfacp-product-switch-title {
+    display:none!important;
+    height:0!important;
+    margin:0!important;
+    padding:0!important;
+}
+
+/* Quitar el botón informativo / vista rápida que FunnelKit agrega al producto. */
+#ct-checkout-slot .wfacp_qv-button {
+    display:none!important;
+    visibility:hidden!important;
+    width:0!important;
+    height:0!important;
+    margin:0!important;
+    padding:0!important;
+    pointer-events:none!important;
+}
+
+/* Resumen del segundo paso: sin miniatura ni enlaces, con precio sin cortes. */
+#ct-checkout-slot .wfacp_order_summary_container .product-image,
+#ct-checkout-slot .wfacp_order_summary_container .product-img {
+    display:none!important;
+    visibility:hidden!important;
+    width:0!important;
+    min-width:0!important;
+    height:0!important;
+    margin:0!important;
+    padding:0!important;
+    pointer-events:none!important;
+}
+#ct-checkout-slot .wfacp_order_summary_container .product-name-area,
+#ct-checkout-slot .wfacp_order_summary_container .product-name.wfacp_summary_img_true {
+    width:auto!important;
+    padding-left:0!important;
+    margin-left:0!important;
+}
+#ct-checkout-slot .wfacp_order_summary_container .product-name-area a,
+#ct-checkout-slot .wfacp_order_summary_container .wfacp_order_summary_item_name a,
+#ct-checkout-slot .wfacp_order_summary_container .wfacp_cart_title_sec a {
+    color:inherit!important;
+    text-decoration:none!important;
+    pointer-events:none!important;
+    cursor:default!important;
+}
+#ct-checkout-slot .wfacp_order_summary_container td.product-total,
+#ct-checkout-slot .wfacp_order_summary_container th.product-total {
+    width:92px!important;
+    min-width:92px!important;
+    max-width:92px!important;
+    padding-left:6px!important;
+    text-align:right!important;
+    vertical-align:middle!important;
+    white-space:nowrap!important;
+}
+#ct-checkout-slot .wfacp_order_summary_container td.product-total *,
+#ct-checkout-slot .wfacp_order_summary_container th.product-total * {
+    white-space:nowrap!important;
+    word-break:keep-all!important;
+    overflow-wrap:normal!important;
+}
+#ct-checkout-slot .wfacp_order_summary_container td.product-total .sale-price {
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:flex-end!important;
+    justify-content:center!important;
+    gap:2px!important;
+    width:100%!important;
+    max-width:100%!important;
+}
+#ct-checkout-slot .wfacp_order_summary_container td.product-total .sale-price del,
+#ct-checkout-slot .wfacp_order_summary_container td.product-total .sale-price ins {
+    display:block!important;
+    width:auto!important;
+    max-width:100%!important;
+    margin:0!important;
+    padding:0!important;
+    text-align:right!important;
+    white-space:nowrap!important;
+}
+
+@media (min-width:700px) {
+    body #wfacp-e-form #product_switching_field .wfacp_ps_title_wrap {
+        width:75%!important;
+        max-width:75%!important;
+        flex-basis:75%!important;
+    }
+    body #wfacp-e-form #product_switching_field .wfacp_product_sec_start {
+        width:25%!important;
+        max-width:25%!important;
+        flex-basis:25%!important;
+    }
+}
+
+/* Jerarquía de precios: oferta protagonista y precio original secundario. */
+#ct-checkout-slot .sale-price del,
+#ct-checkout-slot .sale-price del .woocommerce-Price-amount,
+#ct-checkout-slot .sale-price del bdi,
+#ct-checkout-slot .sale-price del .woocommerce-Price-currencySymbol {
+    color:#8A8A8A!important;
+    font-size:12.5px!important;
+    font-weight:500!important;
+    line-height:1.25!important;
+}
+#ct-checkout-slot .sale-price ins,
+#ct-checkout-slot .sale-price ins .woocommerce-Price-amount,
+#ct-checkout-slot .sale-price ins bdi,
+#ct-checkout-slot .sale-price ins .woocommerce-Price-currencySymbol {
+    color:#1F1F1F!important;
+    font-size:16.5px!important;
+    font-weight:600!important;
+    line-height:1.2!important;
+    text-decoration:none!important;
+}
 .wfacp_next_page_button, .wfacp-checkout-form .button.alt, .wfacp_form .button.alt, #place_order, .wfacp_form .button-primary { background:var(--ct-gold)!important; border:none!important; color:#fff!important; font-family:'Poppins',sans-serif!important; font-weight:700!important; letter-spacing:.3px!important; border-radius:8px!important; box-shadow:0 4px 15px rgba(155,124,80,.3)!important; }
 .wfacp_next_page_button:hover, .wfacp_form .button.alt:hover, #place_order:hover { background:var(--ct-gold-light)!important; }
 .wfacp-coupon-btn { background:var(--ct-gold)!important; color:#fff!important; border-radius:6px!important; border:none!important; }
-.wfacp_main_showcoupon, .wfacp_form a, .wfacp_summary_link { color:var(--ct-gold)!important; }
+.wfacp_main_showcoupon,
+.wfacp_form a:not(.button):not(.ct-cta-btn):not(.wfacp_next_page_button),
+.wfacp_summary_link { color:var(--ct-gold)!important; }
+
+/* Mantener siempre visible el texto de los CTA sobre el fondo dorado. */
+.ct-cta-btn,
+.ct-header-cta-btn,
+.wfacp_next_page_button,
+.wfacp_form .button,
+.wfacp_form .button.alt,
+.wfacp-checkout-form .button,
+#place_order,
+.ct-cta-btn:hover,
+.ct-cta-btn:focus,
+.ct-header-cta-btn:hover,
+.ct-header-cta-btn:focus,
+.wfacp_next_page_button:hover,
+.wfacp_next_page_button:focus,
+.wfacp_form .button:hover,
+.wfacp_form .button:focus,
+#place_order:hover,
+#place_order:focus { color:#fff!important; }
+.ct-cta-btn *,
+.ct-header-cta-btn *,
+.wfacp_next_page_button *,
+.wfacp_form .button *,
+#place_order * { color:#fff!important; }
 .wfacp-order2StepTitle, .wfacp-payment-title, .wfacp_order_summary_container h3, .wfacp-order2StepHeaderText, .wfacp_form h2, .wfacp_form h3 { font-family:'Poppins',sans-serif!important; color:var(--ct-text-dark)!important; }
 
 
@@ -1296,6 +1409,63 @@ body.ct-focus-checkout .ct-sticky-header { display:none!important; }
 body.ct-focus-checkout #ct-offer-wrapper > *:not(.ct-checkout-section) { display:none!important; }
 body.ct-focus-checkout .ct-checkout-section > .ct-section-title-center { display:none!important; }
 body.ct-focus-checkout .ct-checkout-section { padding-top:22px; }
+#ct-contact-heading { display:none; text-align:center; margin:0 auto 22px; max-width:560px; }
+#ct-contact-heading .ct-back-to-plan {
+    display:flex;
+    align-items:center;
+    gap:6px;
+    width:max-content;
+    margin:0 auto 16px 0;
+    padding:4px 0;
+    border:0;
+    border-radius:0;
+    background:transparent;
+    box-shadow:none;
+    color:var(--ct-gold);
+    font-family:'Poppins',sans-serif;
+    font-size:12.5px;
+    font-weight:700;
+    line-height:1.35;
+    cursor:pointer;
+}
+#ct-contact-heading .ct-back-to-plan:hover,
+#ct-contact-heading .ct-back-to-plan:focus-visible { color:var(--ct-gold-light); }
+#ct-contact-heading .ct-back-to-plan:focus-visible { outline:2px solid var(--ct-gold); outline-offset:4px; }
+#ct-contact-heading .ct-back-to-plan svg {
+    width:17px;
+    height:17px;
+    flex:0 0 17px;
+    fill:none;
+    stroke:currentColor;
+    stroke-width:2;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+}
+#ct-contact-heading h2 { margin:0 0 7px; color:var(--ct-text-dark); font-family:'Poppins',sans-serif; font-size:26px; font-weight:800; line-height:1.2; letter-spacing:-.35px; }
+#ct-contact-heading p { margin:0; color:var(--ct-text-light); font-size:13.5px; font-weight:500; line-height:1.55; }
+body.ct-focus-checkout #ct-contact-heading { display:block!important; }
+#ct-checkout-slot .place_order_back_btn {
+    display:block!important;
+    margin-top:14px!important;
+    text-align:center!important;
+}
+#ct-checkout-slot .wfacp_back_page_button {
+    color:var(--ct-gold)!important;
+    font-family:'Poppins',sans-serif!important;
+    font-size:12.5px!important;
+    font-weight:700!important;
+    text-decoration:none!important;
+}
+#ct-checkout-slot .wfacp_back_page_button:hover,
+#ct-checkout-slot .wfacp_back_page_button:focus { color:var(--ct-gold-light)!important; }
+
+/* Blocksy agrega un hero de página cuando FunnelKit usa la plantilla por defecto. */
+body.single-wfacp_checkout .hero-section,
+body.wfacp_checkout-template-default .hero-section { display:none!important; }
+body.single-wfacp_checkout .site-main > .ct-container-full {
+    margin-top:0!important;
+    padding-top:0!important;
+}
 
 
 /* ============ RESPONSIVE — tablet + desktop: FONDO BLANCO FULL SCREEN ============ */
@@ -1303,8 +1473,6 @@ body.ct-focus-checkout .ct-checkout-section { padding-top:22px; }
     html, body { background: #ffffff; }
     body { padding: 0; align-items: stretch; }
     .ct-app-card { max-width: 100%; width: 100%; box-shadow: none; border-radius: 0; min-height: 100vh; }
-    /* QUIZ: blanco a toda la pantalla, contenido centrado en columna */
-    .ct-flow-container { min-height: 100vh; max-width: 660px; margin: 0 auto; padding: 60px 32px; }
     /* OFERTA: contenido centrado en columna sobre el blanco */
     #ct-offer-wrapper { max-width: 720px; margin: 0 auto; }
     .ct-checkout-section { width: min(94vw, 900px); margin-left: 50%; transform: translateX(-50%); }
@@ -1318,24 +1486,17 @@ body.ct-focus-checkout .ct-checkout-section { padding-top:22px; }
     .ct-hero-title { font-size: 31px; }
     .ct-hero-sub { font-size: 15px; max-width: 470px; }
     .ct-section-title-center { font-size: 22px; }
-    .ct-quiz-step h2 { font-size: 25px; }
-    .ct-step-subtitle { font-size: 14px; }
-    .ct-option-card { font-size: 15.5px; padding: 20px; }
-    .ct-age-grid { gap: 16px; }
-    .ct-age-card span { font-size: 16px; }
     .ct-item-title { font-size: 13.5px; }
     .ct-item-sub { font-size: 12px; }
     .ct-cta-btn { font-size: 15px; padding: 18px; }
 }
 @media (min-width: 1024px) {
-    .ct-flow-container { max-width: 680px; padding: 72px 32px; }
     #ct-offer-wrapper { max-width: 760px; }
     .ct-checkout-section { width: min(90vw, 1000px); }
     .ct-sticky-header__content { max-width: 760px; }
     .ct-hero-title { font-size: 37px; }
     .ct-hero-sub { font-size: 16px; max-width: 540px; }
     .ct-section-title-center { font-size: 25px; }
-    .ct-quiz-step h2 { font-size: 28px; }
     .ct-chevron-b__desc { font-size: 10px; }
     .ct-chevron-b__week { font-size: 9.5px; }
     .ct-chevron-b__icon { width: 34px; height: 34px; }

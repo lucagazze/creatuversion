@@ -16,6 +16,12 @@
             <div id="ct-progress-fill" class="ct-progress-fill" style="width: 14.2%;"></div>
         </div>
         <div class="ct-quiz-steps-header">
+            <button type="button" id="ct-quiz-back" class="ct-quiz-back" onclick="previousStep()" aria-label="Volver al paso anterior" hidden>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M15 18l-6-6 6-6"></path>
+                </svg>
+                <span>Atrás</span>
+            </button>
             <span id="ct-step-indicator">Paso 1 de 7</span>
         </div>
 
@@ -149,9 +155,25 @@ function nextStep(current, val) {
     document.querySelector('.ct-quiz-step[data-step="'+next+'"]').classList.add('ct-quiz-step--active');
     updateProgress(next);
 }
+function previousStep() {
+    var active = document.querySelector('.ct-quiz-step--active');
+    if (!active) return;
+    var current = Number(active.getAttribute('data-step'));
+    if (!current || current <= 1) return;
+    var previous = current - 1;
+    var previousPanel = document.querySelector('.ct-quiz-step[data-step="'+previous+'"]');
+    if (!previousPanel) return;
+    active.classList.remove('ct-quiz-step--active');
+    previousPanel.classList.add('ct-quiz-step--active');
+    updateProgress(previous);
+    try { window.scrollTo({top:0, left:0, behavior:'smooth'}); }
+    catch(e) { window.scrollTo(0, 0); }
+}
 function updateProgress(step) {
     document.getElementById('ct-step-indicator').textContent = 'Paso ' + step + ' de 7';
     document.getElementById('ct-progress-fill').style.width = ((step/7)*100) + '%';
+    var backButton = document.getElementById('ct-quiz-back');
+    if (backButton) backButton.hidden = step <= 1;
 }
 function processStep5() {
     var checks = document.querySelectorAll('input[name="errors"]:checked');
@@ -238,8 +260,45 @@ body {
 }
 
 .ct-quiz-steps-header {
-    font-size: 12px; font-weight: 600;
-    color: var(--ct-text-light); margin-bottom: 25px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    min-height:24px;
+    font-size:12px;
+    font-weight:600;
+    color:var(--ct-text-light);
+    margin-bottom:25px;
+}
+
+.ct-quiz-back {
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    padding:3px 0;
+    border:0;
+    border-radius:0;
+    background:transparent;
+    box-shadow:none;
+    color:var(--ct-gold);
+    font-family:'Poppins',sans-serif;
+    font-size:12px;
+    font-weight:700;
+    line-height:1.35;
+    cursor:pointer;
+}
+.ct-quiz-back[hidden] { display:none!important; }
+.ct-quiz-back:hover,
+.ct-quiz-back:focus-visible { color:var(--ct-gold-light); }
+.ct-quiz-back:focus-visible { outline:2px solid var(--ct-gold); outline-offset:4px; }
+.ct-quiz-back svg {
+    width:16px;
+    height:16px;
+    flex:0 0 16px;
+    fill:none;
+    stroke:currentColor;
+    stroke-width:2;
+    stroke-linecap:round;
+    stroke-linejoin:round;
 }
 
 .ct-quiz-step { display: none; animation: fadeIn 0.4s ease forwards; }
