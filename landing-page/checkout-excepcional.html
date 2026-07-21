@@ -55,6 +55,149 @@
       padding: 0 20px;
     }
 
+    /* ── KEYFRAMES ── */
+    @keyframes heartbeat {
+      0%   { box-shadow: 0 8px 32px rgba(214,28,41,0.45), 0 0 0 0   rgba(214,28,41,0.25); }
+      25%  { box-shadow: 0 8px 32px rgba(214,28,41,0.45), 0 0 0 8px rgba(214,28,41,0.1);  }
+      50%  { box-shadow: 0 8px 32px rgba(214,28,41,0.45), 0 0 0 16px rgba(214,28,41,0.0); }
+      100% { box-shadow: 0 8px 32px rgba(214,28,41,0.45), 0 0 0 0   rgba(214,28,41,0.0); }
+    }
+    @keyframes sheen {
+      0%   { left: -60%; }
+      100% { left: 130%; }
+    }
+    @keyframes blink-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.7); }
+    }
+    @keyframes countdown-flip {
+      0%   { transform: scale(1); color: #fff; }
+      50%  { transform: scale(1.4); color: #FFD700; }
+      100% { transform: scale(1); color: #fff; }
+    }
+
+    /* ── STICKY HEADER ── */
+    .sticky-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 9999;
+      background: #D61C29;
+      box-shadow: 0 2px 16px rgba(214,28,41,0.5);
+      padding: 10px 16px;
+    }
+    .sticky-header__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .sticky-header__label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.85);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .countdown-pill {
+      background: rgba(0,0,0,0.25);
+      border-radius: 6px;
+      padding: 4px 12px;
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .countdown-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 28px;
+    }
+    .countdown-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+    }
+    .countdown-num.flip { animation: countdown-flip 0.2s ease-out; }
+    .countdown-label {
+      font-size: 9px;
+      color: rgba(255,255,255,0.65);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 1px;
+    }
+    .countdown-sep {
+      font-size: 20px;
+      font-weight: 900;
+      color: rgba(255,255,255,0.6);
+      align-self: flex-start;
+      margin-top: 3px;
+    }
+    .sticky-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      color: #D61C29;
+      background: #fff;
+      border-radius: 50px;
+      padding: 10px 20px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      animation: pulse-sticky 2.2s infinite ease-in-out;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .sticky-cta:hover {
+      transform: scale(1.06);
+      box-shadow: 0 0 0 6px rgba(255,255,255,0.3);
+      animation-play-state: paused;
+    }
+    @keyframes pulse-sticky {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.4); }
+      50%       { box-shadow: 0 0 0 7px rgba(255,255,255,0.0); }
+    }
+    .live-dot {
+      width: 7px; height: 7px;
+      background: #D61C29;
+      border-radius: 50%;
+      display: inline-block;
+      animation: blink-dot 1.2s infinite ease-in-out;
+    }
+    .sticky-spacer { height: 58px; }
+
+    /* ── URGENCY INLINE BAR ── */
+    .urgency-bar {
+      background: linear-gradient(90deg, #7B0018 0%, #D61C29 50%, #7B0018 100%);
+      padding: 13px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .urgency-bar__text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .urgency-bar__timer {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: #FFD700;
+      letter-spacing: 2px;
+      background: rgba(0,0,0,0.2);
+      padding: 4px 14px;
+      border-radius: 8px;
+    }
+
     /* Top Red Alert Bar */
     .alert-bar {
       background-color: #D61C29;
@@ -149,32 +292,51 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background-color: #D61C29;
+      gap: 10px;
+      background: linear-gradient(135deg, #D61C29 0%, #E8152E 50%, #9C151D 100%);
       color: #ffffff;
       font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
+      font-weight: 900;
       font-size: 18px;
       padding: 22px 40px;
       border-radius: 50px;
-      box-shadow: 0 10px 25px rgba(214, 28, 41, 0.3);
-      transition: all 0.3s ease;
       cursor: pointer;
       border: none;
       text-transform: uppercase;
       width: 100%;
       max-width: 480px;
       margin: 10px 0 20px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(214,28,41,0.45), 0 0 0 0 rgba(214,28,41,0.3);
+      animation: heartbeat 2.4s infinite ease-in-out;
+      transition: transform 0.15s ease;
     }
-
+    .btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 50%);
+      border-radius: 50px;
+      pointer-events: none;
+    }
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: -50%; left: -60%;
+      width: 40%; height: 200%;
+      background: rgba(255,255,255,0.22);
+      transform: skewX(-20deg);
+      transition: left 0.6s ease;
+      pointer-events: none;
+    }
+    .btn:hover::after { left: 130%; }
     .btn:hover {
-      background-color: #9C151D;
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(214, 28, 41, 0.45);
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: 0 14px 40px rgba(214,28,41,0.55), 0 0 0 10px rgba(214,28,41,0.12);
+      animation-play-state: paused;
     }
-
-    .btn:active {
-      transform: translateY(-1px);
-    }
+    .btn:active { transform: scale(0.98); }
 
     /* Trust Badges */
     .trust-badges {
@@ -325,68 +487,35 @@
       text-align: center;
     }
 
-    .testimonials-grid {
+    .testimonials-grid-images {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 30px;
+      gap: 20px;
+      justify-items: center;
       margin-top: 40px;
     }
 
-    @media (min-width: 768px) {
-      .testimonials-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    .testimonial-card {
-      background-color: #ffffff;
+    .testimonial-img {
+      max-width: 100%;
+      width: 100%;
+      max-width: 380px;
       border-radius: 12px;
-      padding: 25px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-      text-align: left;
-      border-top: 4px solid #D61C29;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
     }
 
-    .stars {
-      color: #FBBF24;
-      font-size: 18px;
-      margin-bottom: 15px;
+    .testimonial-img:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     }
 
-    .testimonial-card p {
-      font-size: 14px;
-      color: #4b5563;
-      font-style: italic;
-      margin-bottom: 20px;
-    }
-
-    .user-info {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .avatar {
-      width: 45px;
-      height: 45px;
-      background-color: #e5e7eb;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      color: #4b5563;
-      font-size: 14px;
-    }
-
-    .user-details h4 {
-      font-size: 14px;
-      color: #111827;
-    }
-
-    .user-details span {
-      font-size: 12px;
-      color: #9ca3af;
+    @media (min-width: 768px) {
+      .testimonials-grid-images {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
 
     /* 3 Steps Method Section */
@@ -668,6 +797,19 @@
     ¡Hacé que se enamore rápido y se quede pensando en vos las 24 horas!
   </div>
 
+  <!-- Urgency Bar with inline countdown -->
+  <div class="urgency-bar">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#fff" stroke-width="2"/><path d="M12 6v6l4 2" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/></svg>
+      <div>
+        <div class="urgency-bar__text">¡Esta oferta vence en:</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.7);font-weight:600;">Solo por tiempo limitado</div>
+      </div>
+    </div>
+    <div class="urgency-bar__timer" id="lp-urgency-timer">14:59</div>
+  </div>
+
+
   <!-- Hero Section -->
   <header class="hero">
     <div class="container hero-content">
@@ -676,7 +818,7 @@
       
       <!-- Generated Book Mockup Image -->
       <div class="book-mockup-wrapper">
-        <img class="book-mockup-img" width="320" height="427" src="assets/libro_mujer_excepcional.png" alt="Libro El Poder de la Mujer Excepcional - Daniel Savioli">
+        <img class="book-mockup-img" width="320" height="427" src="assets/libro_mujer_excepcional.png" alt="Libro El Poder de la Mujer Excepcional">
       </div>
 
       <!-- Main CTA -->
@@ -719,42 +861,11 @@
       <h2 class="section-title">Así como nuestras alumnas</h2>
       <p class="section-subtitle">Ellas aplicaron las técnicas y estrategias del libro y obtuvieron resultados el mismo día.</p>
       
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p>"No lo puedo creer. Estábamos súper distanciados y después de leer los capítulos de comunicación y enviarle los textos, me invitó a cenar y me admitió que no paraba de pensar en mí."</p>
-          <div class="user-info">
-            <div class="avatar">CF</div>
-            <div class="user-details">
-              <h4>Camila F.</h4>
-              <span>Buenos Aires, Argentina</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p>"El manual me abrió los ojos. Me di cuenta de todos los pequeños errores que cometía sin darme cuenta en las citas y que terminaban alejando a los hombres. ¡Súper recomendado!"</p>
-          <div class="user-info">
-            <div class="avatar">SM</div>
-            <div class="user-details">
-              <h4>Sofía M.</h4>
-              <span>Córdoba, Argentina</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p>"Vale cada centavo. Es extremadamente práctico, va directo al grano sin rodeos ni teorías inútiles. Las técnicas para manejar la ansiedad en las citas me salvaron la vida."</p>
-          <div class="user-info">
-            <div class="avatar">VT</div>
-            <div class="user-details">
-              <h4>Valeria T.</h4>
-              <span>Rosario, Argentina</span>
-            </div>
-          </div>
-        </div>
+      <div class="testimonials-grid-images">
+        <img src="assets/dep9_es.png" alt="Testimonio WhatsApp 1" class="testimonial-img">
+        <img src="assets/dep10_es.png" alt="Testimonio WhatsApp 2" class="testimonial-img">
+        <img src="assets/dep11_es.png" alt="Testimonio WhatsApp 3" class="testimonial-img">
+        <img src="assets/dep12_es.png" alt="Testimonio WhatsApp 4" class="testimonial-img">
       </div>
     </div>
   </section>
@@ -947,30 +1058,86 @@
     </div>
   </section>
 
-  <!-- FAQ & Help Section -->
-  <section class="faq">
-    <div class="container">
-      <h2 class="section-title">¿Tenés alguna duda?</h2>
-      <p class="section-subtitle">Hacé clic abajo y chateá directamente con nuestro equipo de soporte por WhatsApp.</p>
-      
-      <a href="https://wa.me/5491100000000?text=Hola,%20tengo%20una%20duda%20sobre%20el%20ebook%20El%20Poder%20de%20la%20Mujer%20Excepcional" target="_blank" class="btn whatsapp-btn">
-        Chatear con Soporte por WhatsApp
+  <!-- ═══ STICKY HEADER HTML (inserted by JS at top of body) ═══ -->
+  <div id="lp-sticky" class="sticky-header">
+    <div class="sticky-header__inner">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+        <span class="sticky-header__label">Oferta vence en:</span>
+        <div class="countdown-pill">
+          <div class="countdown-unit">
+            <span class="countdown-num" id="lp-cd-min">14</span>
+            <span class="countdown-label">min</span>
+          </div>
+          <span class="countdown-sep">:</span>
+          <div class="countdown-unit">
+            <span class="countdown-num" id="lp-cd-sec">59</span>
+            <span class="countdown-label">seg</span>
+          </div>
+        </div>
+      </div>
+      <a href="#comprar" class="sticky-cta">
+        <span class="live-dot"></span>
+        OBTENER AHORA
       </a>
     </div>
-  </section>
+  </div>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>El Poder de la Mujer Excepcional © 2026. Todos los derechos reservados.</p>
-      <p>Este producto no garantiza resultados mágicos. Los resultados varían según la aplicación de las técnicas de cada persona.</p>
-      <div class="footer-links">
-        <a href="#">Políticas de Privacidad</a>
-        <a href="#">Términos de Uso</a>
-        <a href="mailto:soporte@tuproyecto.com">Contacto</a>
-      </div>
-    </div>
-  </footer>
+  <script>
+    // ── Push body down so content doesn't hide under sticky ──
+    document.body.insertAdjacentHTML('afterbegin', '<div class="sticky-spacer"></div>');
+    // Move sticky to top
+    var sticky = document.getElementById('lp-sticky');
+    document.body.insertBefore(sticky, document.body.firstChild);
+
+    // ── COUNTDOWN ──
+    (function () {
+      var KEY = 'pme_lp_deadline';
+      var DURATION = 15 * 60 * 1000;
+      var deadline;
+      var stored = sessionStorage.getItem(KEY);
+      if (stored) {
+        deadline = parseInt(stored, 10);
+        if (Date.now() > deadline) { deadline = Date.now() + DURATION; sessionStorage.setItem(KEY, deadline); }
+      } else {
+        deadline = Date.now() + DURATION;
+        sessionStorage.setItem(KEY, deadline);
+      }
+
+      function pad(n) { return String(n).padStart(2, '0'); }
+
+      function tick() {
+        var rem = Math.max(0, Math.floor((deadline - Date.now()) / 1000));
+        var m = Math.floor(rem / 60), s = rem % 60;
+        var ms = pad(m), ss = pad(s);
+
+        var elMin = document.getElementById('lp-cd-min');
+        var elSec = document.getElementById('lp-cd-sec');
+        var elUrg = document.getElementById('lp-urgency-timer');
+
+        if (elMin && elMin.textContent !== ms) {
+          elMin.textContent = ms;
+          elMin.classList.remove('flip');
+          void elMin.offsetWidth;
+          elMin.classList.add('flip');
+        }
+        if (elSec && elSec.textContent !== ss) {
+          elSec.textContent = ss;
+          elSec.classList.remove('flip');
+          void elSec.offsetWidth;
+          elSec.classList.add('flip');
+        }
+        if (elUrg) elUrg.textContent = ms + ':' + ss;
+
+        if (rem <= 0) {
+          deadline = Date.now() + DURATION;
+          sessionStorage.setItem(KEY, deadline);
+        }
+      }
+
+      tick();
+      setInterval(tick, 1000);
+    })();
+  </script>
 
 </body>
 </html>
